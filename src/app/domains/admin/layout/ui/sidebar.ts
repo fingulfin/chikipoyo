@@ -15,7 +15,7 @@ import { User } from '@/app/domains/admin/layout/ui/user';
     <div class="relative flex items-center gap-x-2.5 pt-5 pr-4 pb-0 pl-6">
       <!-- Logo -->
       <img
-        src="/images/logo/logo.svg"
+        src="images/logo/logo.svg"
         class="size-8"
         alt="Fuse logo"
       />

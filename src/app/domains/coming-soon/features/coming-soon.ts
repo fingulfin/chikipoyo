@@ -23,7 +23,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
           <!-- Logo -->
           <img
             class="w-12"
-            src="/images/logo/logo.svg"
+            src="images/logo/logo.svg"
             alt="Fuse logo"
           />
 
@@ -136,22 +136,22 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
               <div class="flex shrink-0 items-center -space-x-1.5">
                 <img
                   class="h-10 w-10 rounded-full object-cover ring-1"
-                  src="/images/photos/female-18.jpg"
+                  src="images/photos/female-18.jpg"
                   alt="Avatar image"
                 />
                 <img
                   class="h-10 w-10 rounded-full object-cover ring-1"
-                  src="/images/photos/female-11.jpg"
+                  src="images/photos/female-11.jpg"
                   alt="Avatar image"
                 />
                 <img
                   class="h-10 w-10 rounded-full object-cover ring-1"
-                  src="/images/photos/male-09.jpg"
+                  src="images/photos/male-09.jpg"
                   alt="Avatar image"
                 />
                 <img
                   class="h-10 w-10 rounded-full object-cover ring-1"
-                  src="/images/photos/male-16.jpg"
+                  src="images/photos/male-16.jpg"
                   alt="Avatar image"
                 />
               </div>

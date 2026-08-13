@@ -24,7 +24,7 @@ import { Scheme, Theming } from '@/app/core/theming';
     >
       <img
         class="size-9 rounded-lg object-cover grayscale"
-        src="/images/photos/brian-hughes.jpg"
+        src="images/photos/brian-hughes.jpg"
         alt="User avatar"
       />
       <div class="flex min-w-0 flex-auto flex-col select-none">
@@ -51,7 +51,7 @@ import { Scheme, Theming } from '@/app/core/theming';
       >
         <img
           class="size-9 rounded-lg object-cover"
-          src="/images/photos/brian-hughes.jpg"
+          src="images/photos/brian-hughes.jpg"
           alt="User avatar"
         />
         <div class="ml-3 flex min-w-0 flex-auto flex-col select-none">
