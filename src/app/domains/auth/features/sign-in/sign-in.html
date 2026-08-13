@@ -109,6 +109,13 @@
           </a>
         </div>
 
+        <!-- Error message -->
+        @if (errorMessage()) {
+          <div class="mt-4 rounded-lg bg-red-100 p-4 text-red-700 dark:bg-red-900/30 dark:text-red-300">
+            {{ errorMessage() }}
+          </div>
+        }
+
         <!-- Submit button -->
         <button
           type="submit"

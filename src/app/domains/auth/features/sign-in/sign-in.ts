@@ -6,6 +6,7 @@ import {
   required,
   submit,
 } from '@angular/forms/signals';
+import { AuthService } from '../../services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDivider } from '@angular/material/divider';
@@ -31,6 +32,7 @@ import { Router, RouterLink } from '@angular/router';
 export default class AuthSignIn {
   // Dependencies
   private router = inject(Router);
+  private authService = inject(AuthService);
 
   // State
   protected signInFormModel = signal({
@@ -44,12 +46,30 @@ export default class AuthSignIn {
     required(form.password, { message: 'You must enter a password' });
   });
 
+  protected errorMessage = signal<string | null>(null);
+
   signIn(event: Event) {
     event.preventDefault();
+    this.errorMessage.set(null);
 
     submit(this.signInForm, async () => {
-      // Navigate to a route, demo purposes only
-      this.router.navigateByUrl('/admin/dashboards');
+      try {
+        const response = await this.authService
+          .login({
+            email: this.signInFormModel().email,
+            password: this.signInFormModel().password,
+          })
+          .toPromise();
+
+        if (response?.token) {
+          localStorage.setItem('token', response.token);
+          this.router.navigateByUrl('/admin/dashboards');
+        }
+      } catch (err: unknown) {
+        const httpError = err as { error?: { error?: string } };
+        const errorText = httpError.error?.error ?? 'Authentication failed';
+        this.errorMessage.set(errorText);
+      }
     });
   }
 }
