@@ -9,7 +9,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "fuse": {
+    "chikipoyo": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -36,7 +36,7 @@
           },
           "configurations": {
             "production": {
-                 "baseHref": "/fuse/",
+                 "baseHref": "/chikipoyo/",
               "budgets": [
                 {
                   "type": "initial",
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "fuse:build:production"
+              "buildTarget": "chikipoyo:build:production"
             },
             "development": {
-              "buildTarget": "fuse:build:development"
+              "buildTarget": "chikipoyo:build:development"
             }
           },
           "defaultConfiguration": "development"

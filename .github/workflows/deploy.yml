@@ -1,5 +1,5 @@
-# Deploy fuse to GitHub Pages
-# The site will be served at https://<user>.github.io/fuse/
+# Deploy chikipoyo to GitHub Pages
+# The site will be served at https://<user>.github.io/chikipoyo/
 name: Deploy to GitHub Pages
 
 on:
@@ -30,16 +30,16 @@ jobs:
       - run: npm ci
 
       - name: Build (production)
-        run: npx ng build --configuration production --base-href /fuse/
+        run: npx ng build --configuration production --base-href /chikipoyo/
 
       - name: Prepare SPA artifact
         run: |
-          mv dist/fuse/browser/index.csr.html dist/fuse/browser/index.html
-          cp dist/fuse/browser/index.html dist/fuse/browser/404.html
+          mv dist/chikipoyo/browser/index.csr.html dist/chikipoyo/browser/index.html
+          cp dist/chikipoyo/browser/index.html dist/chikipoyo/browser/404.html
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/fuse/browser
+          path: dist/chikipoyo/browser
 
   deploy:
     needs: build
