@@ -6,7 +6,6 @@ import {
   required,
   submit,
 } from '@angular/forms/signals';
-import { AuthService } from '../../services/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDivider } from '@angular/material/divider';
@@ -14,6 +13,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'auth-sign-in',
@@ -36,14 +37,14 @@ export default class AuthSignIn {
 
   // State
   protected signInFormModel = signal({
-    email: 'hughes.brian@company.com',
-    password: 'Secure-Password-123$%^',
+    email: 'tu-email@mail.com',
+    password: 'pasword',
   });
   protected signInForm = form(this.signInFormModel, (form) => {
-    required(form.email, { message: 'You must enter an email address' });
-    email(form.email, { message: 'You must enter a valid email address' });
+    required(form.email, { message: 'Debes agregar un email' });
+    email(form.email, { message: 'Debes proporcionar un email valido' });
 
-    required(form.password, { message: 'You must enter a password' });
+    required(form.password, { message: 'Debes proporcionar un password' });
   });
 
   protected errorMessage = signal<string | null>(null);
@@ -54,12 +55,12 @@ export default class AuthSignIn {
 
     submit(this.signInForm, async () => {
       try {
-        const response = await this.authService
-          .login({
+        const response = await firstValueFrom(
+          this.authService.login({
             email: this.signInFormModel().email,
             password: this.signInFormModel().password,
-          })
-          .toPromise();
+          }),
+        );
 
         if (response?.token) {
           localStorage.setItem('token', response.token);
