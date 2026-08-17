@@ -44,12 +44,12 @@ export const NAVIGATION: NavigationItem[] = [
     label: 'Extras',
     description: 'Additional pages and features',
     children: [
-      {
+     /* {
         id: 'extras/error',
         label: 'Error page',
         icon: 'circle-x',
         route: 'error/404',
-      },
+      },*/
       {
         id: 'extras/sign-in',
         label: 'Sign in',
@@ -74,18 +74,20 @@ export const NAVIGATION: NavigationItem[] = [
         icon: 'rotate-ccw-key',
         route: '/auth/reset-password',
       },
+      /*
       {
         id: 'extras/coming-soon',
         label: 'Coming soon',
         icon: 'traffic-cone',
         route: '/coming-soon',
       },
+      
       {
         id: 'extras/maintenance',
         label: 'Maintenance',
         icon: 'wrench',
         route: '/maintenance',
-      },
+      },*/
     ],
   },
 ];

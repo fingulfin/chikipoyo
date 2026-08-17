@@ -30,7 +30,7 @@ export const routes: Route[] = [
     loadChildren: () => import('./domains/coming-soon/routes'),
   },
 
-  // Maintenance
+  ///*
   {
     path: 'maintenance',
     loadChildren: () => import('./domains/maintenance/routes'),

@@ -22,17 +22,7 @@ import { Scheme, Theming } from '@/app/core/theming';
       class="flex w-full cursor-pointer items-center gap-x-3 rounded-xl p-2 text-left hover:bg-neutral-700/10 dark:hover:bg-neutral-300/10"
       [matMenuTriggerFor]="userMenu"
     >
-      <img
-        class="size-9 rounded-lg object-cover grayscale"
-        src="images/photos/brian-hughes.jpg"
-        alt="User avatar"
-      />
-      <div class="flex min-w-0 flex-auto flex-col select-none">
-        <div class="truncate font-medium">Brian Hughes</div>
-        <div class="text-on-surface-variant truncate text-sm">
-          brian&#64;example.com
-        </div>
-      </div>
+    
       <mat-icon
         class="size-4"
         svgIcon="ellipsis-vertical"
@@ -45,27 +35,10 @@ import { Scheme, Theming } from '@/app/core/theming';
       yPosition="above"
       #userMenu="matMenu"
     >
-      <button
-        class="py-2 [&>span]:flex [&>span]:items-center"
-        mat-menu-item
-      >
-        <img
-          class="size-9 rounded-lg object-cover"
-          src="images/photos/brian-hughes.jpg"
-          alt="User avatar"
-        />
-        <div class="ml-3 flex min-w-0 flex-auto flex-col select-none">
-          <div class="truncate font-medium">Brian Hughes</div>
-          <div class="text-on-surface-variant truncate text-xs">
-            brian&#64;example.com
-          </div>
-        </div>
-      </button>
-      <mat-divider />
-      <button mat-menu-item>
-        <mat-icon svgIcon="sparkles" />
-        Upgrade to Pro
-      </button>
+      
+       
+
+     
       <mat-divider />
       <button mat-menu-item>
         <mat-icon svgIcon="user-round" />

@@ -42,21 +42,9 @@ import { User } from '@/app/domains/admin/layout/ui/user';
     <div
       class="m-4 mb-2 rounded-lg border border-neutral-900/5 bg-neutral-900/5 p-4 dark:border-neutral-50/5 dark:bg-neutral-50/5"
     >
-      <div class="font-semibold">Your trial is expiring soon!</div>
-      <div class="mt-1 text-sm">
-        You have 3 days left in your trial. Upgrade to pro to continue using all
-        features.
-      </div>
-      <button
-        matButton="filled"
-        class="small mt-4 w-full"
-      >
-        Upgrade now
-        <mat-icon
-          svgIcon="move-right"
-          iconPositionEnd
-        />
-      </button>
+
+      
+   
     </div>
 
     <!-- Footer -->
