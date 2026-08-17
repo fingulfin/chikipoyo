@@ -64,7 +64,7 @@ export default class AuthSignIn {
 
         if (response?.token) {
           localStorage.setItem('token', response.token);
-          this.router.navigateByUrl('/admin/dashboards');
+          this.router.navigateByUrl('/admin/maestros');
         }
       } catch (err: unknown) {
         const httpError = err as { error?: { error?: string } };
