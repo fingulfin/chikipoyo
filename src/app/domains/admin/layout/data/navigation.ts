@@ -25,7 +25,13 @@ export const NAVIGATION: NavigationItem[] = [
         icon: 'admin-panel-settings',
         route: '/admin/maestros',
       },
-         ],
+      {
+        id: 'maestros/caracteristicas',
+        label: 'Características',
+        icon: 'category',
+        route: '/admin/maestros/caracteristicas',
+      },
+    ],
   },
   {
     id: 'videojuego',
