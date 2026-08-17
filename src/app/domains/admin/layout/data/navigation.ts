@@ -15,27 +15,15 @@ export type NavigationItem = {
 
 export const NAVIGATION: NavigationItem[] = [
   {
-    id: 'dashboards',
-    label: 'Dashboards',
-    description: 'Overview of key metrics',
+    id: 'maestros',
+    label: 'Maestros',
+    description: 'Administrative entities',
     children: [
       {
-        id: 'dashboards/project',
-        label: 'Project',
-        icon: 'folder-kanban',
-        route: '/admin/dashboards/project',
-      },
-      {
-        id: 'dashboards/analytics',
-        label: 'Analytics',
-        icon: 'chart-area',
-        route: '/admin/dashboards/analytics',
-      },
-      {
-        id: 'dashboards/finance',
-        label: 'Finance',
-        icon: 'chart-candlestick',
-        route: '/admin/dashboards/finance',
+        id: 'maestros/administracion',
+        label: 'Administración',
+        icon: 'admin-panel-settings',
+        route: '/admin/maestros',
       },
     ],
   },

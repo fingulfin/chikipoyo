@@ -10,11 +10,11 @@ const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: '/auth/sign-in' },
 
       // -----------------------------------------------------------------------
-      // Dashboards
+      // Maestros
       // -----------------------------------------------------------------------
       {
-        path: 'dashboards',
-        loadChildren: () => import('./modules/dashboards/routes'),
+        path: 'maestros',
+        loadChildren: () => import('./modules/maestros/routes'),
       },
 
       // -----------------------------------------------------------------------
