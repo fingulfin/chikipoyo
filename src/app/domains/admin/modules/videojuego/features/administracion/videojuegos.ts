@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { MatCard } from '@angular/material/card';
 
 @Component({
-  selector: 'maestros-administracion',
+  selector: 'videojuego-administracion',
   imports: [MatCard],
   templateUrl: './administracion.html',
 })
-export default class MaestrosAdministracion {}
+export default class VideojuegoAdministracion {}

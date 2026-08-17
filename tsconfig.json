@@ -16,7 +16,8 @@
     "module": "preserve",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["node"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -28,7 +29,7 @@
   "files": [],
   "references": [
     {
-      "path": "./tsconfig.spec.json"
+      "path": "./tsconfig.app.json"
     }
   ]
 }

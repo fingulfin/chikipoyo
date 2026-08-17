@@ -25,6 +25,19 @@ export const NAVIGATION: NavigationItem[] = [
         icon: 'admin-panel-settings',
         route: '/admin/maestros',
       },
+         ],
+  },
+  {
+    id: 'videojuego',
+    label: 'Videojuego',
+    description: 'Video game management',
+    children: [
+      {
+        id: 'videojuego/administracion',
+        label: 'Videojuego',
+        icon: 'admin-panel-settings',
+        route: '/admin/videojuego',
+      },
     ],
   },
   {
