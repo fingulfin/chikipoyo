@@ -49,7 +49,7 @@ export const NAVIGATION: NavigationItem[] = [
   {
     id: 'extras',
     label: 'Extras',
-    description: 'Additional pages and features',
+    description: 'Administrar cuenta',
     children: [
      /* {
         id: 'extras/error',
@@ -69,12 +69,13 @@ export const NAVIGATION: NavigationItem[] = [
         icon: 'log-out',
         route: '/auth/sign-up',
       },
+      /*
       {
         id: 'extras/forgot-password',
         label: 'Forgot password',
         icon: 'rectangle-ellipsis',
         route: '/auth/forgot-password',
-      },
+      },*/
       {
         id: 'extras/reset-password',
         label: 'Reset password',
