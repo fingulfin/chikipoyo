@@ -67,8 +67,8 @@ export default class AuthSignIn {
           this.router.navigateByUrl('/admin/maestros');
         }
       } catch (err: unknown) {
-        const httpError = err as { error?: { error?: string } };
-        const errorText = httpError.error?.error ?? 'Authentication failed';
+        const httpError = err as { error?: { message?: string } };
+        const errorText = httpError.error?.message ?? 'Authentication failed';
         this.errorMessage.set(errorText);
       }
     });
