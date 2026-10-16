@@ -65,7 +65,7 @@ export const NAVIGATION: NavigationItem[] = [
       },
       {
         id: 'extras/sign-up',
-        label: 'Sign up',
+        label: 'Registrarse',
         icon: 'log-out',
         route: '/auth/sign-up',
       },
@@ -78,14 +78,14 @@ export const NAVIGATION: NavigationItem[] = [
       },*/
       {
         id: 'extras/reset-password',
-        label: 'Reset password',
+        label: 'Cambiar password',
         icon: 'rotate-ccw-key',
         route: '/auth/reset-password',
       },
       
       {
         id: 'extras/coming-soon',
-        label: 'Coming soon',
+        label: 'Proximamente',
         icon: 'traffic-cone',
         route: '/coming-soon',
       },
