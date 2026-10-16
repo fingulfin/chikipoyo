@@ -5,13 +5,35 @@
       Gestión de maestros. Esta sección está en construcción.
     </p>
 
-    <mat-tab-group class="mt-6">
-      <mat-tab label="Actualizar">
+<mat-tab-group class="mt-6">
+      <mat-tab label="Actualiar">
         <div class="py-4">
-          <h3 class="text-lg font-semibold">Actualizar maestros</h3>
+          <h3 class="text-lg font-semibold">Actualiar maestros</h3>
           <p class="mt-2 text-neutral-500">
             Actualiza la información de los maestros.
           </p>
+
+          <form class="mt-6 flex flex-col gap-y-4">
+            <mat-form-field class="w-full">
+              <mat-label>Nombre</mat-label>
+              <input matInput value="Juan Campos Villafane" />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Nombre de usuario</mat-label>
+              <input matInput placeholder="Username" />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Correo electronico</mat-label>
+              <input matInput placeholder="Email" />
+            </mat-form-field>
+
+            <mat-form-field class="w-full">
+              <mat-label>Password</mat-label>
+              <input matInput type="password" placeholder="Password" />
+            </mat-form-field>
+          </form>
         </div>
       </mat-tab>
 
