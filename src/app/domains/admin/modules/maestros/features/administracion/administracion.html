@@ -16,22 +16,22 @@
           <form class="mt-6 flex flex-col gap-y-4">
             <mat-form-field class="w-full">
               <mat-label>Nombre</mat-label>
-              <input matInput value="" />
+              <input matInput [value]="user()?.name ?? ''" />
             </mat-form-field>
 
             <mat-form-field class="w-full">
               <mat-label>Nombre de usuario</mat-label>
-              <input matInput placeholder="Username" />
+              <input matInput [value]="user()?.username ?? ''" />
             </mat-form-field>
 
             <mat-form-field class="w-full">
               <mat-label>Correo electronico</mat-label>
-              <input matInput placeholder="Email" [disabled]="true" />
+              <input matInput [value]="user()?.email ?? ''" [disabled]="true" />
             </mat-form-field>
 
             <mat-form-field class="w-full">
               <mat-label>Password</mat-label>
-              <input matInput type="password" placeholder="Password" [disabled]="true" />
+              <input matInput type="password" [value]="user()?.password ?? ''" [disabled]="true" />
             </mat-form-field>
           </form>
         </div>

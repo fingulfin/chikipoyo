@@ -62,10 +62,10 @@ export default class AuthSignIn {
           }),
         );
 
-        if (response?.token) {
+if (response?.token) {
           localStorage.setItem('token', response.token);
           localStorage.setItem('email', response.email);
-          this.router.navigateByUrl('/admin/maestros');
+          this.router.navigate(['/admin/maestros']);
         }
       } catch (err: unknown) {
         const httpError = err as { error?: { message?: string } };
