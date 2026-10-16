@@ -40,7 +40,7 @@ export class AuthService {
 console.log("Headers"+JSON.stringify(headers));
 
     // 3. Make the GET request passing options as the second argument
-    this.http.get<any>("http://localhost:8080/api/users/email/rapidclimate@gmail.com", { headers })
+    this.http.get<any>(this.userUrl+"/"+email, { headers })
       .subscribe({
         next: (response) => {
        
