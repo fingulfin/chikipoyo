@@ -84,7 +84,8 @@ import {
                 [routerLinkActiveOptions]="
                   node.activeOptions ?? { exact: true }
                 "
-                (click)="$event.preventDefault()"
+//                (click)="$event.preventDefault()"
+(click)="onItemClick(node, $event)"
                 #rla="routerLinkActive"
                 #treeItem="ngTreeItem"
               >
@@ -235,4 +236,16 @@ export class Navigation {
 
     return options;
   }
+onItemClick(node: NavigationItem, event: Event) {
+  event.preventDefault();
+  if (node.id === 'extras/sign-in') {
+    // your custom code here
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/auth/sign-in');
+    console.log('Token removed from localStorage');
+  }
+  this.router.navigateByUrl(node.route ?? '');
+}
+
+
 }

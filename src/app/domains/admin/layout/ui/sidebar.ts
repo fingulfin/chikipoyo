@@ -36,7 +36,7 @@ import { User } from '@/app/domains/admin/layout/ui/user';
     <!-- Spacer -->
     <div class="flex-auto"></div>
 
-    <!-- Sidebar notification -->
+    <!-- Sidebar notification 
     <div
       class="m-4 mb-2 rounded-lg border border-neutral-900/5 bg-neutral-900/5 p-4 dark:border-neutral-50/5 dark:bg-neutral-50/5"
     >
@@ -45,10 +45,11 @@ import { User } from '@/app/domains/admin/layout/ui/user';
    
     </div>
 
-    <!-- Footer -->
+   
+    <
     <div class="p-2">
       <user />
-    </div>
+    </div> -->
   `,
 })
 export class AdminSidebar {}
