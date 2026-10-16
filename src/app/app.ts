@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, effect } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +10,18 @@ import { RouterOutlet } from '@angular/router';
   },
   template: `<router-outlet />`,
 })
-export class App {}
+export class App {
+  private router = inject(Router);
+
+  constructor() {
+    effect(() => {
+      if (typeof localStorage === 'undefined') {
+        return;
+      }
+      const token = localStorage.getItem('token');
+      if (token && !this.router.url.includes('/admin/maestros')) {
+        this.router.navigateByUrl('/admin/maestros');
+      }
+    });
+  }
+}

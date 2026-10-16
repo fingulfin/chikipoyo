@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {
@@ -6,7 +6,7 @@ import {
   MatSidenavContainer,
   MatSidenavContent,
 } from '@angular/material/sidenav';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { Media } from '@/app/core/media';
 import { LanguageSwitcher } from '@/app/domains/admin/layout/ui/language-switcher';
 import { Notifications } from '@/app/domains/admin/layout/ui/notifications';
@@ -84,9 +84,22 @@ import { AdminSidebar } from '@/app/domains/admin/layout/ui/sidebar';
 export class AdminLayout {
   // Dependencies
   private media = inject(Media);
+  private router = inject(Router);
 
   // State
   protected isMobile = computed(() =>
     this.media.match(`(max-width: 1023px)`)()
   );
+
+  constructor() {
+    effect(() => {
+      if (typeof localStorage === 'undefined') {
+        return;
+      }
+      const token = localStorage.getItem('token');
+      if (token && !this.router.url.includes('/admin/maestros')) {
+        this.router.navigateByUrl('/admin/maestros');
+      }
+    });
+  }
 }

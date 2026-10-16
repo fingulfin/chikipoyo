@@ -64,6 +64,7 @@ export default class AuthSignIn {
 
         if (response?.token) {
           localStorage.setItem('token', response.token);
+          localStorage.setItem('email', response.email);
           this.router.navigateByUrl('/admin/maestros');
         }
       } catch (err: unknown) {
