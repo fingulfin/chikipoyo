@@ -32,28 +32,12 @@ export class AuthService {
 
   getUserByEmail(email: string) {
     const token = typeof localStorage !== 'undefined' ? localStorage.getItem('token') : null;
-   const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    console.log("Fetching user by email: " + email + " with token: " + token);
-//Mio antes
-console.log("Headers"+JSON.stringify(headers));
+    let headers = new HttpHeaders();
 
-    // 3. Make the GET request passing options as the second argument
-    this.http.post<any>(this.userUrl, { "email": email }, { headers })
-      .subscribe({
-        next: (response) => {
-       
-          console.log('Success:', response);
-        },
-        error: (err) => {
-          console.error('Request failed:', err);
-        }
-      });
+    if (token) {
+      headers = headers.set('Authorization', `Bearer ${token}`);
+    }
 
-
-
-
-    return this.http.get<User>(`${this.userUrl}/${email}`, { headers });
+    return this.http.post<User>(this.userUrl, { email }, { headers });
   }
 }
