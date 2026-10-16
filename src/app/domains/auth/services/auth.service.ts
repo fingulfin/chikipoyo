@@ -24,7 +24,7 @@ export interface User {
 export class AuthService {
   private http = inject(HttpClient);
   private readonly loginUrl = `${environment.apiUrl}/api/auth/login`;
-  private readonly userUrl = `${environment.apiUrl}/api/users/email`;
+  private readonly userUrl = `${environment.apiUrl}/api/users/find-by-email`;
 
   login(payload: LoginRequest) {
     return this.http.post<LoginResponse>(this.loginUrl, payload);
@@ -40,7 +40,7 @@ export class AuthService {
 console.log("Headers"+JSON.stringify(headers));
 
     // 3. Make the GET request passing options as the second argument
-    this.http.get<any>(this.userUrl+"/"+email, { headers })
+    this.http.post<any>(this.userUrl, { "email": email }, { headers })
       .subscribe({
         next: (response) => {
        
