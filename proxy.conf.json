@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://localhost:8080",
+    "target": "https://java-seguridad-665665536462.europe-west1.run.app",
     "secure": false,
     "changeOrigin": true
   },
