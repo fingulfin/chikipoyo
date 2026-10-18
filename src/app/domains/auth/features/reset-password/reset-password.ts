@@ -40,7 +40,7 @@ export default class AuthResetPassword {
     passwordValidation: '',
   });
   protected resetPasswordForm = form(this.resetPasswordFormModel, (form) => {
-    required(form.password, { message: 'You must enter a password' });
+    required(form.password, { message: 'Debes introducir un passwod' });
     required(form.passwordValidation, {
       message: 'You must enter a password',
     });
@@ -53,7 +53,7 @@ export default class AuthResetPassword {
       if (password !== passwordValidation) {
         return {
           kind: 'mismatch',
-          message: 'The passwords do not match',
+          message: 'Los passwords no coinciden',
         };
       }
 
@@ -72,7 +72,7 @@ export default class AuthResetPassword {
           ? localStorage.getItem('email')
           : null;
       if (!email) {
-        this.errorMessage.set('No authenticated user was found.');
+        this.errorMessage.set('No se encotroun usuario autenticado.');
         return;
       }
 
@@ -85,10 +85,10 @@ export default class AuthResetPassword {
         );
         await this.router.navigateByUrl('/auth/sign-in');
       } catch (err: unknown) {
-        console.error('Failed to reset password', err);
+        console.error('Fallo el reseteo del password', err);
         const httpError = err as { error?: { message?: string } };
         this.errorMessage.set(
-          httpError.error?.message ?? 'Failed to reset password.',
+          httpError.error?.message ?? 'Fallo resetear password.',
         );
       }
     });

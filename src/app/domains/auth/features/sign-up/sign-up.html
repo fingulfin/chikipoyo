@@ -12,15 +12,15 @@
 
       <!-- Title -->
       <div class="leading-tight mt-8 text-4xl font-extrabold tracking-tight">
-        Sign up
+        Registrarse
       </div>
       <div class="mt-0.5 flex items-baseline font-medium">
-        <div class="text-neutral-500">Already have an account?</div>
+        <div class="text-neutral-500">Ya tienes una cuenta?</div>
         <a
           class="ml-1 underline"
           routerLink="/auth/sign-in"
         >
-          Sign in
+          Ingresar
         </a>
       </div>
 
@@ -36,7 +36,7 @@
 
           <!-- Name field -->
           <mat-form-field class="w-full">
-            <mat-label>Name</mat-label>
+            <mat-label>Nombre</mat-label>
             <input
               id="name"
               matInput
@@ -53,7 +53,7 @@
 
           <!-- Username field -->
           <mat-form-field class="w-full">
-            <mat-label>Username</mat-label>
+            <mat-label>Usuario</mat-label>
             <input
               id="username"
               matInput
@@ -73,7 +73,7 @@
 
           <!-- Email field -->
           <mat-form-field class="w-full">
-            <mat-label>Email address</mat-label>
+            <mat-label>Email</mat-label>
             <input
               id="email"
               matInput
@@ -95,17 +95,17 @@
         <!-- ToS and PP -->
         <div class="mt-2 inline-flex w-full items-end">
           <mat-checkbox class="-ml-2">
-            <span>I agree with</span>
+            <span>Estoy de acuerdo con</span>
             <a
               class="ml-1 underline"
               [routerLink]="['./']"
-              >Terms
+              >Terminos y condiciones
             </a>
             <span>and</span>
             <a
               class="ml-1 underline"
               [routerLink]="['./']"
-              >Privacy Policy
+              >Política de privacidad
             </a>
           </mat-checkbox>
         </div>
@@ -117,7 +117,7 @@
           class="mt-6 w-full"
           [disabled]="signUpForm().invalid()"
         >
-          Create my account
+          Crear cuenta
         </button>
       </form>
     </div>

@@ -44,10 +44,10 @@ export default class AuthSignUp {
     email: '',
   });
   protected signUpForm = form(this.signUpFormModel, (form) => {
-    required(form.name, { message: 'You must enter your name' });
-    required(form.email, { message: 'You must enter an email address' });
-    email(form.email, { message: 'You must enter a valid email address' });
-    required(form.username, { message: 'You must enter a username' });
+    required(form.name, { message: 'Debes introucir tu nombre' });
+    required(form.email, { message: 'Debes introducir un email' });
+    email(form.email, { message: 'Debes introducir un email valido' });
+    required(form.username, { message: 'Introduce un nombre de usuario' });
   });
   protected errorMessage = signal<string | null>(null);
 
