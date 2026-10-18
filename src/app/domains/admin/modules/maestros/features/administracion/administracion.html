@@ -13,15 +13,15 @@
             Actualiza la información de los maestros.
           </p>
 
-          <form class="mt-6 flex flex-col gap-y-4">
+          <form class="mt-6 flex flex-col gap-y-4" (submit)="$event.preventDefault(); updateUser()">
             <mat-form-field class="w-full">
               <mat-label>Nombre</mat-label>
-              <input matInput [value]="user()?.name ?? ''" />
+              <input matInput [value]="user()?.name ?? ''" (input)="updateField('name', $event)" />
             </mat-form-field>
 
             <mat-form-field class="w-full">
               <mat-label>Nombre de usuario</mat-label>
-              <input matInput [value]="user()?.username ?? ''" />
+              <input matInput [value]="user()?.username ?? ''" (input)="updateField('username', $event)" />
             </mat-form-field>
 
             <mat-form-field class="w-full">
@@ -29,10 +29,9 @@
               <input matInput [value]="user()?.email ?? ''" [disabled]="true" />
             </mat-form-field>
 
-            <mat-form-field class="w-full">
-              <mat-label>Password</mat-label>
-              <input matInput type="password" [value]="user()?.password ?? ''" [disabled]="true" />
-            </mat-form-field>
+            <button mat-flat-button type="submit" [disabled]="!user() || saving()">
+              {{ saving() ? 'Actualizando...' : 'Actualizar datos' }}
+            </button>
           </form>
         </div>
       </mat-tab>

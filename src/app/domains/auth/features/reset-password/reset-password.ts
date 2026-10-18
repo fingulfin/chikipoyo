@@ -13,6 +13,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'auth-reset-password',
@@ -30,6 +32,7 @@ import { Router } from '@angular/router';
 export default class AuthResetPassword {
   // Dependencies
   private router = inject(Router);
+  private authService = inject(AuthService);
 
   // State
   protected resetPasswordFormModel = signal({
@@ -57,13 +60,37 @@ export default class AuthResetPassword {
       return null;
     });
   });
+  protected errorMessage = signal<string | null>(null);
 
   resetPassword(event: Event) {
     event.preventDefault();
+    this.errorMessage.set(null);
 
     submit(this.resetPasswordForm, async () => {
-      // Navigate to a route, demo purposes only
-      this.router.navigateByUrl('/auth/sign-in');
+      const email =
+        typeof localStorage !== 'undefined'
+          ? localStorage.getItem('email')
+          : null;
+      if (!email) {
+        this.errorMessage.set('No authenticated user was found.');
+        return;
+      }
+
+      try {
+        await firstValueFrom(
+          this.authService.updatePassword({
+            email,
+            password: this.resetPasswordFormModel().password,
+          }),
+        );
+        await this.router.navigateByUrl('/auth/sign-in');
+      } catch (err: unknown) {
+        console.error('Failed to reset password', err);
+        const httpError = err as { error?: { message?: string } };
+        this.errorMessage.set(
+          httpError.error?.message ?? 'Failed to reset password.',
+        );
+      }
     });
   }
 }
