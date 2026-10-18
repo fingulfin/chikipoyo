@@ -1,4 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Component, inject, signal, TemplateRef, viewChild } from '@angular/core';
 import {
   email,
   form,
@@ -8,10 +9,12 @@ import {
 } from '@angular/forms/signals';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'auth-sign-up',
@@ -21,36 +24,57 @@ import { Router, RouterLink } from '@angular/router';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule,
     MatCheckboxModule,
+    MatDialogModule,
     FormField,
   ],
 })
 export default class AuthSignUp {
   // Dependencies
   private router = inject(Router);
+  private authService = inject(AuthService);
+  private dialog = inject(MatDialog);
 
   // State
+  private registrationSuccessDialog =
+    viewChild.required<TemplateRef<unknown>>('registrationSuccessDialog');
   protected signUpFormModel = signal({
     name: '',
+    username: '',
     email: '',
-    password: '',
-    company: '',
   });
   protected signUpForm = form(this.signUpFormModel, (form) => {
     required(form.name, { message: 'You must enter your name' });
     required(form.email, { message: 'You must enter an email address' });
     email(form.email, { message: 'You must enter a valid email address' });
-    required(form.password, { message: 'You must enter a password' });
-    required(form.company, { message: 'You must enter your company name' });
+    required(form.username, { message: 'You must enter a username' });
   });
+  protected errorMessage = signal<string | null>(null);
 
   signUp(event: Event) {
     event.preventDefault();
+    this.errorMessage.set(null);
 
     submit(this.signUpForm, async () => {
-      // Navigate to a route, demo purposes only
-      this.router.navigateByUrl('/auth/sign-in');
+      try {
+        await firstValueFrom(
+          this.authService.register(this.signUpFormModel()),
+        );
+        await firstValueFrom(
+          this.dialog
+            .open(this.registrationSuccessDialog())
+            .afterClosed(),
+        );
+        await this.router.navigateByUrl('/auth/sign-in');
+      } catch (err: unknown) {
+        console.error('Failed to register user', err);
+        const message =
+          err instanceof HttpErrorResponse &&
+          typeof err.error?.message === 'string'
+            ? err.error.message
+            : 'Failed to create account.';
+        this.errorMessage.set(message);
+      }
     });
   }
 }

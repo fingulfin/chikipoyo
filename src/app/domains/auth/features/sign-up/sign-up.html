@@ -30,6 +30,10 @@
         (submit)="signUp($event)"
       >
         <div class="flex flex-col gap-y-4">
+          @if (errorMessage()) {
+            <p class="text-sm text-red-600" role="alert">{{ errorMessage() }}</p>
+          }
+
           <!-- Name field -->
           <mat-form-field class="w-full">
             <mat-label>Name</mat-label>
@@ -47,19 +51,20 @@
             </mat-error>
           </mat-form-field>
 
-          <!-- Company field -->
+          <!-- Username field -->
           <mat-form-field class="w-full">
-            <mat-label>Company</mat-label>
+            <mat-label>Username</mat-label>
             <input
-              id="company"
+              id="username"
               matInput
-              [formField]="signUpForm.company"
+              [formField]="signUpForm.username"
             />
             <mat-error>
               @if (
-                signUpForm.company().touched() && signUpForm.company().invalid()
+                signUpForm.username().touched() &&
+                signUpForm.username().invalid()
               ) {
-                @for (error of signUpForm.company().errors(); track error) {
+                @for (error of signUpForm.username().errors(); track error) {
                   {{ error.message }}
                 }
               }
@@ -85,53 +90,6 @@
             </mat-error>
           </mat-form-field>
 
-          <!-- Password field -->
-          <mat-form-field
-            appearance="fill"
-            class="w-full"
-          >
-            <mat-label>Password</mat-label>
-            <input
-              id="password"
-              matInput
-              type="password"
-              [formField]="signUpForm.password"
-              #passwordField
-            />
-            <button
-              matIconButton
-              type="button"
-              (click)="
-                passwordField.type === 'password'
-                  ? (passwordField.type = 'text')
-                  : (passwordField.type = 'password')
-              "
-              matSuffix
-            >
-              @if (passwordField.type === 'password') {
-                <mat-icon
-                  class="size-5"
-                  svgIcon="eye"
-                ></mat-icon>
-              }
-              @if (passwordField.type === 'text') {
-                <mat-icon
-                  class="size-5"
-                  svgIcon="eye-off"
-                ></mat-icon>
-              }
-            </button>
-            <mat-error>
-              @if (
-                signUpForm.password().touched() &&
-                signUpForm.password().invalid()
-              ) {
-                @for (error of signUpForm.password().errors(); track error) {
-                  {{ error.message }}
-                }
-              }
-            </mat-error>
-          </mat-form-field>
         </div>
 
         <!-- ToS and PP -->
@@ -164,6 +122,16 @@
       </form>
     </div>
   </div>
+
+  <ng-template #registrationSuccessDialog>
+    <h2 mat-dialog-title>Registro exitoso</h2>
+    <mat-dialog-content>
+      Revisa tu email para obtener tu password de acceso
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button matButton mat-dialog-close>Continuar</button>
+    </mat-dialog-actions>
+  </ng-template>
 
   <div
     class="relative hidden flex-auto items-center justify-center overflow-hidden border-l bg-neutral-950 p-8 sm:px-12 md:flex"

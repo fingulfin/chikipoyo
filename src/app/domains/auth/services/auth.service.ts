@@ -20,6 +20,12 @@ export interface User {
   password: string;
 }
 
+export interface RegisterRequest {
+  name: string;
+  username: string;
+  email: string;
+}
+
 export interface PasswordUpdateRequest {
   email: string;
   password: string;
@@ -29,11 +35,16 @@ export interface PasswordUpdateRequest {
 export class AuthService {
   private http = inject(HttpClient);
   private readonly loginUrl = `${environment.apiUrl}/api/auth/login`;
+  private readonly registerUrl = `${environment.apiUrl}/api/auth/register`;
   private readonly userUrl = `${environment.apiUrl}/api/users/find-by-email`;
   private readonly passwordUrl = 'http://localhost:8080/api/users/password';
 
   login(payload: LoginRequest) {
     return this.http.post<LoginResponse>(this.loginUrl, payload);
+  }
+
+  register(user: RegisterRequest) {
+    return this.http.post<unknown>(this.registerUrl, user);
   }
 
   getUserByEmail(email: string) {
