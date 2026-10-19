@@ -16,6 +16,10 @@ const routes: Routes = [
           import('./features/forgot-password/forgot-password'),
       },
       {
+        path: 'remove-user',
+        loadComponent: () => import('./features/remove-user/remove-user'),
+      },
+      {
         path: 'reset-password',
         loadComponent: () => import('./features/reset-password/reset-password'),
       },

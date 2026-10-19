@@ -69,6 +69,12 @@ export const NAVIGATION: NavigationItem[] = [
         icon: 'log-out',
         route: '/auth/sign-up',
       },
+      {
+        id: 'extras/remove-user',
+        label: 'Eliminar usuario',
+        icon: 'user-round-x',
+        route: '/auth/remove-user',
+      },
       /*
       {
         id: 'extras/forgot-password',
