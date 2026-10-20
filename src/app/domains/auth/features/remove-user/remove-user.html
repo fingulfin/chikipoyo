@@ -10,7 +10,49 @@
       Remove user
     </div>
     <div class="mt-0.5 font-medium">
-      User removal is not available yet.
+      Enter the email address of the user you want to remove.
     </div>
+
+    <form class="mt-8" (submit)="remove($event)">
+      <div class="flex flex-col gap-y-4">
+        @if (errorMessage()) {
+          <p class="text-sm text-red-600" role="alert">{{ errorMessage() }}</p>
+        }
+        @if (successMessage()) {
+          <p class="text-sm text-green-700" role="status">
+            {{ successMessage() }}
+          </p>
+        }
+
+        <mat-form-field class="w-full">
+          <mat-label>Email</mat-label>
+          <input
+            id="email"
+            type="email"
+            matInput
+            [formField]="removeUserForm.email"
+          />
+          <mat-error>
+            @if (
+              removeUserForm.email().touched() &&
+              removeUserForm.email().invalid()
+            ) {
+              @for (error of removeUserForm.email().errors(); track error) {
+                {{ error.message }}
+              }
+            }
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <button
+        type="submit"
+        matButton="filled"
+        class="mt-6 w-full"
+        [disabled]="removeUserForm().invalid()"
+      >
+        Remove user
+      </button>
+    </form>
   </mat-card>
 </div>
