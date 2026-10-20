@@ -6,20 +6,31 @@
       alt="Fuse logo"
     />
 
-    <div class="mt-8 text-4xl leading-tight font-extrabold tracking-tight">
+    <div class="leading-tight mt-8 text-4xl font-extrabold tracking-tight">
       Remove user
     </div>
     <div class="mt-0.5 font-medium">
-      Enter the email address of the user you want to remove.
+      Introducetu correo para eliminar tu cuenta.
     </div>
 
-    <form class="mt-8" (submit)="remove($event)">
+    <form
+      class="mt-8"
+      (submit)="remove($event)"
+    >
       <div class="flex flex-col gap-y-4">
         @if (errorMessage()) {
-          <p class="text-sm text-red-600" role="alert">{{ errorMessage() }}</p>
+          <p
+            class="text-sm text-red-600"
+            role="alert"
+          >
+            {{ errorMessage() }}
+          </p>
         }
         @if (successMessage()) {
-          <p class="text-sm text-green-700" role="status">
+          <p
+            class="text-sm text-green-700"
+            role="status"
+          >
             {{ successMessage() }}
           </p>
         }
@@ -56,3 +67,24 @@
     </form>
   </mat-card>
 </div>
+
+<ng-template #removeUserConfirmation>
+  <h2 mat-dialog-title>Remove user?</h2>
+  <mat-dialog-content>
+  Estas seguro que deseas eliminar tu cuenta? Esta cuenta es irreversible.
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button
+      matButton
+      [mat-dialog-close]="false"
+    >
+      Cancelar
+    </button>
+    <button
+      matButton="filled"
+      [mat-dialog-close]="true"
+    >
+      Confirmar eliminar
+    </button>
+  </mat-dialog-actions>
+</ng-template>

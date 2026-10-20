@@ -1,5 +1,11 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component, inject, signal } from '@angular/core';
+import {
+  Component,
+  inject,
+  signal,
+  TemplateRef,
+  viewChild,
+} from '@angular/core';
 import {
   email,
   form,
@@ -9,6 +15,7 @@ import {
 } from '@angular/forms/signals';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { firstValueFrom } from 'rxjs';
@@ -21,11 +28,16 @@ import { firstValueFrom } from 'rxjs';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatDialogModule,
     FormField,
   ],
 })
 export default class AuthRemoveUser {
   private http = inject(HttpClient);
+  private dialog = inject(MatDialog);
+  private removeUserConfirmation = viewChild.required<TemplateRef<unknown>>(
+    'removeUserConfirmation'
+  );
 
   protected removeUserFormModel = signal({ email: '' });
   protected removeUserForm = form(this.removeUserFormModel, (form) => {
@@ -43,11 +55,18 @@ export default class AuthRemoveUser {
     submit(this.removeUserForm, async () => {
       const emailAddress = this.removeUserFormModel().email;
 
+      const confirmed = await firstValueFrom(
+        this.dialog.open(this.removeUserConfirmation()).afterClosed()
+      );
+      if (!confirmed) {
+        return;
+      }
+
       try {
         await firstValueFrom(
           this.http.delete<void>(
-            `http://localhost:8080/api/users/${encodeURIComponent(emailAddress)}`,
-          ),
+            `http://localhost:8080/api/users/${encodeURIComponent(emailAddress)}`
+          )
         );
         this.successMessage.set('User removed successfully.');
       } catch (err: unknown) {
