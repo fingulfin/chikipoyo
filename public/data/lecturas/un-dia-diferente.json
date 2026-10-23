@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "id": "N1-01-05",
+  "title": "Un día diferente",
+  "language": "es",
+  "reading": {
+    "title": "Un día diferente",
+    "text": "Lucas se despertó más temprano de lo habitual. Miró por la ventana y notó que el cielo estaba completamente despejado. Después de varios días de lluvia, el sol volvía a brillar.\n\nDecidió aprovechar el buen clima para hacer algo distinto. Tomó su bicicleta, se puso el casco y salió a recorrer el parque cercano a su casa. Mientras pedaleaba, observaba los árboles, las flores y a las personas que también disfrutaban del día.\n\nEn un momento, se detuvo junto al lago del parque y se quedó en silencio, mirando el agua. Sintió una gran tranquilidad. Se dio cuenta de que, a veces, las cosas más simples pueden hacer un día especial.\n\nRegresó a casa con una sonrisa y pensó que debería hacer más días como ese."
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple_choice",
+      "prompt": "¿Qué hizo Lucas al despertarse?",
+      "options": [
+        { "id": "a", "text": "Miró la televisión." },
+        { "id": "b", "text": "Salió a correr." },
+        { "id": "c", "text": "Miró por la ventana." },
+        { "id": "d", "text": "Preparó el desayuno." }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "q2",
+      "type": "multiple_choice",
+      "prompt": "¿Por qué Lucas decidió salir en bicicleta?",
+      "options": [
+        { "id": "a", "text": "Porque tenía que ir a la escuela." },
+        { "id": "b", "text": "Porque el clima había mejorado." },
+        { "id": "c", "text": "Porque su amigo lo invitó." },
+        { "id": "d", "text": "Porque quería ir al centro de la ciudad." }
+      ],
+      "correctOptionId": "b"
+    },
+    {
+      "id": "q3",
+      "type": "multiple_choice",
+      "prompt": "¿Qué sintió Lucas junto al lago?",
+      "options": [
+        { "id": "a", "text": "Cansancio." },
+        { "id": "b", "text": "Tristeza." },
+        { "id": "c", "text": "Tranquilidad." },
+        { "id": "d", "text": "Hambre." }
+      ],
+      "correctOptionId": "c"
+    },
+    {
+      "id": "q4",
+      "type": "short_answer",
+      "prompt": "¿Qué fue lo que más le gustó del día?",
+      "expectedAnswer": "Detenerse junto al lago, mirar el agua y disfrutar la tranquilidad del momento.",
+      "acceptedAnswerGuidance": "Aceptar formulaciones equivalentes relacionadas con el momento junto al lago y la sensación de tranquilidad."
+    },
+    {
+      "id": "q5",
+      "type": "open_response",
+      "prompt": "¿Qué crees que significa la frase «las cosas más simples pueden hacer un día especial»? Explica con tus palabras.",
+      "suggestedAnswer": "Significa que experiencias sencillas, como pasear, observar la naturaleza o disfrutar de un momento de calma, pueden hacer que un día sea especial.",
+      "evaluationCriteria": [
+        "Explica la frase con palabras propias.",
+        "Relaciona una experiencia sencilla con el valor de hacer especial un día."
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "open_response",
+      "prompt": "¿Qué actividad te gustaría hacer en un día con buen clima? ¿Por qué?",
+      "responseGuidance": "La respuesta debe mencionar una actividad adecuada para un día de buen clima y justificar brevemente la elección.",
+      "evaluationCriteria": [
+        "Menciona una actividad adecuada para un día de buen clima.",
+        "Justifica brevemente la elección."
+      ]
+    }
+  ]
+}
