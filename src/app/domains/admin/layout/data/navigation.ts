@@ -44,6 +44,24 @@ export const NAVIGATION: NavigationItem[] = [
         icon: 'admin-panel-settings',
         route: '/admin/videojuego',
       },
+      {
+        id: 'videojuego/preguntas',
+        label: 'Preguntas',
+        icon: 'quiz',
+        route: '/admin/videojuego/preguntas',
+      },
+      {
+        id: 'videojuego/problemas',
+        label: 'Problemas',
+        icon: 'quiz',
+        route: '/admin/videojuego/problemas',
+      },
+      {
+        id: 'videojuego/lecturas',
+        label: 'Lecturas',
+        icon: 'book-open',
+        route: '/admin/videojuego/lecturas',
+      },
     ],
   },
   {

@@ -5,6 +5,18 @@ const routes: Routes = [
     path: '',
     loadComponent: () => import('./features/administracion/videojuegos'),
   },
+  {
+    path: 'preguntas',
+    loadComponent: () => import('./features/administracion/preguntas'),
+  },
+  {
+    path: 'problemas',
+    loadComponent: () => import('./features/administracion/problemas'),
+  },
+  {
+    path: 'lecturas',
+    loadComponent: () => import('./features/administracion/lecturas'),
+  },
 ];
 
 export default routes;
