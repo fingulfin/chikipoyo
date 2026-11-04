@@ -1,4 +1,8 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import {
   Component,
   inject,
@@ -13,17 +17,20 @@ import {
   required,
   submit,
 } from '@angular/forms/signals';
+import { environment } from '@/environments/environment';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'auth-remove-user',
   templateUrl: './remove-user.html',
   imports: [
+    RouterLink,
     MatCard,
     MatFormFieldModule,
     MatInputModule,
@@ -63,10 +70,19 @@ export default class AuthRemoveUser {
       }
 
       try {
+        const token =
+          typeof localStorage !== 'undefined'
+            ? localStorage.getItem('token')
+            : null;
+        const headers = token
+          ? new HttpHeaders({ Authorization: `Bearer ${token}` })
+          : new HttpHeaders();
+
         await firstValueFrom(
-          this.http.delete<void>(
-            `http://localhost:8080/api/users/${encodeURIComponent(emailAddress)}`
-          )
+          this.http.delete<void>(`${environment.apiUrl}/api/users`, {
+            body: { email: emailAddress },
+            headers,
+          })
         );
         this.successMessage.set('User removed successfully.');
       } catch (err: unknown) {
