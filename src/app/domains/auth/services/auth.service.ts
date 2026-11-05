@@ -37,7 +37,7 @@ export class AuthService {
   private readonly loginUrl = `${environment.apiUrl}/api/auth/login`;
   private readonly registerUrl = `${environment.apiUrl}/api/auth/register`;
   private readonly userUrl = `${environment.apiUrl}/api/users/find-by-email`;
-  private readonly passwordUrl = 'http://localhost:8080/api/users/password';
+  private readonly passwordUrl = `${environment.apiUrl}/api/users/password`;
 
   login(payload: LoginRequest) {
     return this.http.post<LoginResponse>(this.loginUrl, payload);
@@ -80,6 +80,6 @@ export class AuthService {
       ? new HttpHeaders({ Authorization: `Bearer ${token}` })
       : new HttpHeaders();
 
-    return this.http.put<void>(this.passwordUrl, request, { headers });
+    return this.http.put<void>(`${environment.apiUrl}/api/users/password`, request, { headers });
   }
 }
