@@ -23,7 +23,7 @@ import { MatCard } from '@angular/material/card';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
@@ -42,6 +42,7 @@ import { firstValueFrom } from 'rxjs';
 export default class AuthRemoveUser {
   private http = inject(HttpClient);
   private dialog = inject(MatDialog);
+  private router = inject(Router);
   private removeUserConfirmation = viewChild.required<TemplateRef<unknown>>(
     'removeUserConfirmation'
   );
@@ -85,6 +86,16 @@ export default class AuthRemoveUser {
           })
         );
         this.successMessage.set('User removed successfully.');
+//Aqui removemos el token del localStorage y redirigimos al usuario a la página de inicio de sesión
+        if (typeof localStorage !== 'undefined') {
+          localStorage.removeItem('token');
+          localStorage.removeItem('email');
+          
+        }
+     
+        await this.router.navigateByUrl('/auth/sign-in');
+
+
       } catch (err: unknown) {
         console.error('Failed to remove user', err);
         const errorMessage =
