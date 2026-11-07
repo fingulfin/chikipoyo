@@ -91,9 +91,367 @@
           </section>
         }
       </mat-tab>
-      <mat-tab label="Seleccion"></mat-tab>
-      <mat-tab label="Abierta"></mat-tab>
-      <mat-tab label="Relacion columnas"></mat-tab>
+      <mat-tab label="Seleccion">
+        <form
+          class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2"
+          [formGroup]="preguntaSeleccionForm"
+          (ngSubmit)="crearPreguntaSeleccion()"
+        >
+          <mat-form-field class="sm:col-span-2">
+            <mat-label>Pregunta</mat-label>
+            <textarea
+              matInput
+              rows="3"
+              formControlName="question"
+            ></textarea>
+            @if (preguntaSeleccionForm.controls.question.hasError('required')) {
+              <mat-error>Escribe el texto de la pregunta.</mat-error>
+            }
+          </mat-form-field>
+
+          <div
+            class="sm:col-span-2"
+            formArrayName="options"
+          >
+            <h3 class="mb-3 text-lg font-semibold">Opciones de respuesta</h3>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              @for (
+                option of preguntaSeleccionForm.controls.options.controls;
+                track option.controls.id.value
+              ) {
+                <mat-form-field [formGroup]="option">
+                  <mat-label>Opción {{ option.controls.id.value }}</mat-label>
+                  <input
+                    matInput
+                    formControlName="text"
+                  />
+                  @if (option.controls.text.hasError('required')) {
+                    <mat-error>Escribe el texto de la opción.</mat-error>
+                  }
+                </mat-form-field>
+              }
+            </div>
+          </div>
+
+          <mat-form-field>
+            <mat-label>Respuestas correctas</mat-label>
+            <mat-select
+              formControlName="correctAnswers"
+              multiple
+            >
+              @for (
+                option of preguntaSeleccionForm.controls.options.controls;
+                track option.controls.id.value
+              ) {
+                <mat-option [value]="option.controls.id.value">
+                  Opción {{ option.controls.id.value }}
+                </mat-option>
+              }
+            </mat-select>
+            @if (
+              preguntaSeleccionForm.controls.correctAnswers.hasError(
+                'required'
+              )
+            ) {
+              <mat-error>Selecciona al menos una respuesta correcta.</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>URL de imagen</mat-label>
+            <input
+              matInput
+              formControlName="imageUrl"
+              placeholder="/lecturas/imagen.png"
+            />
+          </mat-form-field>
+
+          <div class="sm:col-span-2">
+            <button
+              matButton="filled"
+              type="submit"
+            >
+              Crear pregunta
+            </button>
+          </div>
+        </form>
+
+        @if (preguntaSeleccionCreada) {
+          <section class="mt-6">
+            <h3 class="mb-2 text-lg font-semibold">Pregunta creada</h3>
+            <pre
+              class="overflow-x-auto rounded-lg bg-neutral-100 p-4 text-sm dark:bg-neutral-800"
+              >{{ preguntaSeleccionCreada | json }}</pre
+            >
+          </section>
+        }
+      </mat-tab>
+      <mat-tab label="Abierta">
+        <form
+          class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2"
+          [formGroup]="preguntaAbiertaForm"
+          (ngSubmit)="crearPreguntaAbierta()"
+        >
+          <mat-form-field class="sm:col-span-2">
+            <mat-label>Pregunta</mat-label>
+            <textarea
+              matInput
+              rows="3"
+              formControlName="question"
+            ></textarea>
+            @if (preguntaAbiertaForm.controls.question.hasError('required')) {
+              <mat-error>Escribe el texto de la pregunta.</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field class="sm:col-span-2">
+            <mat-label>Respuesta sugerida</mat-label>
+            <textarea
+              matInput
+              rows="4"
+              formControlName="suggestedAnswer"
+            ></textarea>
+            @if (
+              preguntaAbiertaForm.controls.suggestedAnswer.hasError('required')
+            ) {
+              <mat-error>Escribe una respuesta sugerida.</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field class="sm:col-span-2">
+            <mat-label>URL de imagen</mat-label>
+            <input
+              matInput
+              formControlName="imageUrl"
+              placeholder="/lecturas/imagen.png"
+            />
+          </mat-form-field>
+
+          <div class="sm:col-span-2">
+            <button
+              matButton="filled"
+              type="submit"
+            >
+              Crear pregunta
+            </button>
+          </div>
+        </form>
+
+        @if (preguntaAbiertaCreada) {
+          <section class="mt-6">
+            <h3 class="mb-2 text-lg font-semibold">Pregunta creada</h3>
+            <pre
+              class="overflow-x-auto rounded-lg bg-neutral-100 p-4 text-sm dark:bg-neutral-800"
+              >{{ preguntaAbiertaCreada | json }}</pre
+            >
+          </section>
+        }
+      </mat-tab>
+      <mat-tab label="Relacion columnas">
+        <form
+          class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2"
+          [formGroup]="preguntaRelacionForm"
+          (ngSubmit)="crearPreguntaRelacion()"
+        >
+          <mat-form-field class="sm:col-span-2">
+            <mat-label>Pregunta</mat-label>
+            <textarea
+              matInput
+              rows="3"
+              formControlName="question"
+            ></textarea>
+            @if (preguntaRelacionForm.controls.question.hasError('required')) {
+              <mat-error>Escribe el texto de la pregunta.</mat-error>
+            }
+          </mat-form-field>
+
+          <section
+            class="rounded-lg border border-neutral-200 p-4 dark:border-neutral-700"
+          >
+            <mat-form-field class="w-full">
+              <mat-label>Título de columna A</mat-label>
+              <input
+                matInput
+                formControlName="columnATitle"
+              />
+            </mat-form-field>
+            <div formArrayName="columnAItems">
+              @for (
+                item of preguntaRelacionForm.controls.columnAItems.controls;
+                track $index
+              ) {
+                <div
+                  class="flex items-start gap-2"
+                  [formGroup]="item"
+                >
+                  <mat-form-field class="flex-1">
+                    <mat-label>Elemento A{{ item.controls.id.value }}</mat-label>
+                    <input
+                      matInput
+                      formControlName="text"
+                    />
+                    @if (item.controls.text.hasError('required')) {
+                      <mat-error>Escribe el elemento.</mat-error>
+                    }
+                  </mat-form-field>
+                  <button
+                    matButton="outlined"
+                    type="button"
+                    aria-label="Quitar elemento de columna A"
+                    (click)="quitarItemColumna('A', $index)"
+                  >
+                    Quitar
+                  </button>
+                </div>
+              }
+            </div>
+            <button
+              matButton="outlined"
+              type="button"
+              (click)="agregarItemColumna('A')"
+            >
+              Agregar elemento A
+            </button>
+          </section>
+
+          <section
+            class="rounded-lg border border-neutral-200 p-4 dark:border-neutral-700"
+          >
+            <mat-form-field class="w-full">
+              <mat-label>Título de columna B</mat-label>
+              <input
+                matInput
+                formControlName="columnBTitle"
+              />
+            </mat-form-field>
+            <div formArrayName="columnBItems">
+              @for (
+                item of preguntaRelacionForm.controls.columnBItems.controls;
+                track $index
+              ) {
+                <div
+                  class="flex items-start gap-2"
+                  [formGroup]="item"
+                >
+                  <mat-form-field class="flex-1">
+                    <mat-label>Elemento B{{ item.controls.id.value }}</mat-label>
+                    <input
+                      matInput
+                      formControlName="text"
+                    />
+                    @if (item.controls.text.hasError('required')) {
+                      <mat-error>Escribe el elemento.</mat-error>
+                    }
+                  </mat-form-field>
+                  <button
+                    matButton="outlined"
+                    type="button"
+                    aria-label="Quitar elemento de columna B"
+                    (click)="quitarItemColumna('B', $index)"
+                  >
+                    Quitar
+                  </button>
+                </div>
+              }
+            </div>
+            <button
+              matButton="outlined"
+              type="button"
+              (click)="agregarItemColumna('B')"
+            >
+              Agregar elemento B
+            </button>
+          </section>
+
+          <section
+            class="sm:col-span-2"
+            formArrayName="correctMatches"
+          >
+            <h3 class="mb-3 text-lg font-semibold">Relaciones correctas</h3>
+            @for (
+              match of preguntaRelacionForm.controls.correctMatches.controls;
+              track $index
+            ) {
+              <div
+                class="mb-2 flex flex-wrap items-start gap-2"
+                [formGroup]="match"
+              >
+                <mat-form-field class="min-w-60 flex-1">
+                  <mat-label>Elemento de columna A</mat-label>
+                  <mat-select formControlName="columnAItemId">
+                    @for (
+                      item of preguntaRelacionForm.controls.columnAItems.controls;
+                      track item.controls.id.value
+                    ) {
+                      <mat-option [value]="item.controls.id.value">
+                        A{{ item.controls.id.value }}:
+                        {{ item.controls.text.value || 'Sin texto' }}
+                      </mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="min-w-60 flex-1">
+                  <mat-label>Elemento de columna B</mat-label>
+                  <mat-select formControlName="columnBItemId">
+                    @for (
+                      item of preguntaRelacionForm.controls.columnBItems.controls;
+                      track item.controls.id.value
+                    ) {
+                      <mat-option [value]="item.controls.id.value">
+                        B{{ item.controls.id.value }}:
+                        {{ item.controls.text.value || 'Sin texto' }}
+                      </mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+                <button
+                  matButton="outlined"
+                  type="button"
+                  aria-label="Quitar relación"
+                  (click)="quitarRelacion($index)"
+                >
+                  Quitar
+                </button>
+              </div>
+            }
+            <button
+              matButton="outlined"
+              type="button"
+              (click)="agregarRelacion()"
+            >
+              Agregar relación
+            </button>
+          </section>
+
+          <mat-form-field class="sm:col-span-2">
+            <mat-label>URL de imagen</mat-label>
+            <input
+              matInput
+              formControlName="imageUrl"
+              placeholder="/lecturas/imagen.png"
+            />
+          </mat-form-field>
+
+          <div class="sm:col-span-2">
+            <button
+              matButton="filled"
+              type="submit"
+            >
+              Crear pregunta
+            </button>
+          </div>
+        </form>
+
+        @if (preguntaRelacionCreada) {
+          <section class="mt-6">
+            <h3 class="mb-2 text-lg font-semibold">Pregunta creada</h3>
+            <pre
+              class="overflow-x-auto rounded-lg bg-neutral-100 p-4 text-sm dark:bg-neutral-800"
+              >{{ preguntaRelacionCreada | json }}</pre
+            >
+          </section>
+        }
+      </mat-tab>
     </mat-tab-group>
   </mat-card>
 </div>
