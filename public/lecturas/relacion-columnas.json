@@ -1,0 +1,78 @@
+{
+  "number": 1,
+  "type": "matching",
+  "question": "Relaciona cada elemento de la columna A con su nivel trófico en la columna B.",
+  "columns": [
+    {
+      "id": "A",
+      "title": "Columna A",
+      "items": [
+        {
+          "id": "1",
+          "text": "Sapos"
+        },
+        {
+          "id": "2",
+          "text": "Bacterias"
+        },
+        {
+          "id": "3",
+          "text": "Hierbas"
+        },
+        {
+          "id": "4",
+          "text": "Insectos"
+        },
+        {
+          "id": "5",
+          "text": "Víboras"
+        },
+        {
+          "id": "6",
+          "text": "Hongos"
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "title": "Columna B",
+      "items": [
+        {
+          "id": "3",
+          "text": "Productores"
+        },
+        {
+          "id": "4",
+          "text": "Consumidores primarios"
+        },
+        {
+          "id": "1",
+          "text": "Consumidores secundarios"
+        },
+        {
+          "id": "5",
+          "text": "Consumidores terciarios"
+        }
+      ]
+    }
+  ],
+  "correctMatches": [
+    {
+      "columnAItemId": "1",
+      "columnBItemId": "1"
+    },
+    {
+      "columnAItemId": "3",
+      "columnBItemId": "3"
+    },
+    {
+      "columnAItemId": "4",
+      "columnBItemId": "4"
+    },
+    {
+      "columnAItemId": "5",
+      "columnBItemId": "5"
+    }
+  ],
+    "imageUrl": "/url/to/image.png"
+}

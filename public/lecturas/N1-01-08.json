@@ -1,0 +1,116 @@
+{
+  "title": "Un nuevo comienzo",
+  "text": "Ana comenzó un nuevo curso en una escuela diferente. Al principio, estaba un poco nerviosa, porque no conocía a nadie. Llevaba una mochila nueva, sus cuadernos y muchas ganas de aprender.\n\nEl primer día, la profesora se presentó con una gran sonrisa y les dijo que juntos harían del aula un lugar para crecer, compartir y respetarse. Durante el recreo, Ana se sentó sola en un banco, pero pronto otra niña se acercó y le preguntó si quería comer con ella. Se llamaba Lucía y también era nueva en la escuela.\n\nDesde ese día, Ana y Lucía se hicieron amigas. Descubrieron que tenían muchos gustos en común y que, a veces, los nuevos comienzos pueden traer grandes sorpresas. Ana aprendió que, aunque algo sea diferente, también puede ser una oportunidad para vivir experiencias increíbles.",
+  "preguntas": [
+    {
+      "number": 1,
+      "type": "multiple_choice",
+      "question": "¿Por qué Ana estaba nerviosa al principio?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Porque no tenía cuadernos."
+        },
+        {
+          "id": "B",
+          "text": "Porque no conocía a nadie."
+        },
+        {
+          "id": "C",
+          "text": "Porque su mochila era nueva."
+        },
+        {
+          "id": "D",
+          "text": "Porque no le gustaba la escuela."
+        }
+      ],
+      "correctAnswer": "B"
+    },
+    {
+      "number": 2,
+      "type": "multiple_choice",
+      "question": "¿Qué hizo Lucía durante el recreo?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Se sentó sola en un banco."
+        },
+        {
+          "id": "B",
+          "text": "Invitó a Ana a comer con ella."
+        },
+        {
+          "id": "C",
+          "text": "Habló con la profesora."
+        },
+        {
+          "id": "D",
+          "text": "Fue a la biblioteca."
+        }
+      ],
+      "correctAnswer": "B"
+    },
+    {
+      "number": 3,
+      "type": "multiple_choice",
+      "question": "¿Qué aprendió Ana al final del texto?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Que los cambios pueden ser positivos."
+        },
+        {
+          "id": "B",
+          "text": "Que es mejor quedarse sola."
+        },
+        {
+          "id": "C",
+          "text": "Que la escuela es muy difícil."
+        },
+        {
+          "id": "D",
+          "text": "Que no le gustan las nuevas experiencias."
+        }
+      ],
+      "correctAnswer": "A"
+    },
+    {
+      "number": 4,
+      "type": "multiple_choice",
+      "question": "¿Cómo era la profesora el primer día?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Seria."
+        },
+        {
+          "id": "B",
+          "text": "Nerviosa."
+        },
+        {
+          "id": "C",
+          "text": "Alegre y amable."
+        },
+        {
+          "id": "D",
+          "text": "Distante."
+        }
+      ],
+      "correctAnswer": "C"
+    },
+    {
+      "number": 5,
+      "type": "open_ended",
+      "question": "¿Por qué crees que es importante ser amable con las personas nuevas? Explica con tus palabras.",
+      "suggestedAnswer": "Ser amable ayuda a que las personas nuevas se sientan bienvenidas, acompañadas y seguras, y facilita que puedan hacer amigos."
+    },
+    {
+      "number": 6,
+      "type": "open_ended",
+      "question": "¿Has vivido una situación parecida a la de Ana? ¿Cómo te sentiste y qué aprendiste?",
+      "suggestedAnswer": "La respuesta debe relatar una situación parecida o indicar que no la ha vivido, explicar cómo se sintió y qué aprendizaje obtuvo o podría obtener.",
+      "teacherNote": "Aceptar experiencias personales diversas, siempre que respondan las dos partes de la consigna."
+    }
+  ],
+  "imageUrl": "/lecturas/Solucionario%20N1-01-08%20-%20Un%20nuevo%20comienzo.png"
+}

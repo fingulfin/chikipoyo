@@ -1,0 +1,98 @@
+{
+  "title": "La biblioteca del barrio",
+  "text": "En el barrio de Sofía hay una biblioteca pequeña, pero muy especial. Está en una antigua casona de color amarillo, con grandes ventanas y un jardín lleno de árboles. Allí, muchas personas van a leer, estudiar o simplemente a disfrutar de un momento de calma.\n\nSofía suele ir los sábados por la mañana. Le gusta recorrer los estantes, descubrir libros nuevos y sentarse en su rincón favorito, junto a la ventana. En la biblioteca también se organizan talleres de escritura, cuentacuentos y clubes de lectura para jóvenes.\n\nPara Sofía, la biblioteca no es solo un lugar con libros, sino un espacio donde se siente parte de una comunidad. Allí ha conocido a amigos que comparten sus intereses y ha aprendido que la lectura también puede ser una forma de viajar, imaginar y crecer.",
+  "preguntas": [
+    {
+      "number": 1,
+      "type": "multiple_choice",
+      "question": "¿Cuál es la idea principal del texto?",
+      "options": [
+        {
+          "id": "A",
+          "text": "La biblioteca del barrio es un lugar importante para Sofía."
+        },
+        {
+          "id": "B",
+          "text": "Sofía solo va a la biblioteca para estudiar."
+        },
+        {
+          "id": "C",
+          "text": "La biblioteca tiene muchos libros antiguos."
+        },
+        {
+          "id": "D",
+          "text": "Sofía prefiere leer en su casa."
+        }
+      ],
+      "correctAnswer": "A"
+    },
+    {
+      "number": 2,
+      "type": "multiple_choice",
+      "question": "¿Qué suele hacer Sofía los sábados por la mañana?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Jugar con sus amigos."
+        },
+        {
+          "id": "B",
+          "text": "Ir a la biblioteca."
+        },
+        {
+          "id": "C",
+          "text": "Asistir a clases de música."
+        },
+        {
+          "id": "D",
+          "text": "Pasear por el parque."
+        }
+      ],
+      "correctAnswer": "B"
+    },
+    {
+      "number": 3,
+      "type": "multiple_choice",
+      "question": "¿Qué actividades se organizan en la biblioteca?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Talleres de escritura."
+        },
+        {
+          "id": "B",
+          "text": "Cuentacuentos."
+        },
+        {
+          "id": "C",
+          "text": "Clubes de lectura."
+        },
+        {
+          "id": "D",
+          "text": "Todas las anteriores."
+        }
+      ],
+      "correctAnswer": "D"
+    },
+    {
+      "number": 4,
+      "type": "open_ended",
+      "question": "¿Qué significa para Sofía la biblioteca? Explica con tus palabras.",
+      "suggestedAnswer": "Para Sofía, la biblioteca es un lugar donde se siente parte de una comunidad, conoce amigos que comparten sus intereses y puede aprender, imaginar y crecer."
+    },
+    {
+      "number": 5,
+      "type": "open_ended",
+      "question": "¿Por qué crees que la biblioteca es un lugar importante para la comunidad?",
+      "suggestedAnswer": "Porque reúne a las personas, ofrece actividades, favorece la lectura y crea oportunidades para aprender y relacionarse."
+    },
+    {
+      "number": 6,
+      "type": "open_ended",
+      "question": "Si pudieras crear un rincón especial en una biblioteca, ¿cómo sería? Describe qué tendría y por qué.",
+      "suggestedAnswer": "El estudiante debe describir un rincón posible de una biblioteca e indicar qué tendría y por qué, por ejemplo, sillones, buena luz, libros, mesas o un espacio tranquilo.",
+      "teacherNote": "Valorar que las respuestas abiertas estén conectadas con la función social y educativa de la biblioteca."
+    }
+  ],
+  "imageUrl": "/url/to/image.png"
+}

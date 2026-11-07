@@ -1,0 +1,98 @@
+{
+  "title": "La biblioteca del barrio",
+  "text": "En el centro del barrio, entre árboles y calles tranquilas, hay una biblioteca que muchos consideran un lugar especial. No es muy grande, pero tiene estanterías llenas de libros, una sala de lectura luminosa y un rincón con computadoras para quienes necesitan investigar.\n\nCada tarde, después de la escuela, varios estudiantes llegan para hacer tareas, leer o simplemente disfrutar de un buen libro. La bibliotecaria, Marta, siempre los recibe con una sonrisa y está dispuesta a ayudar a encontrar el libro ideal.\n\nLa biblioteca también organiza actividades, como clubes de lectura, talleres de escritura y charlas con autores. Para muchos jóvenes del barrio, este lugar es más que un espacio con libros: es un punto de encuentro donde nacen ideas, amistades y grandes sueños.",
+  "preguntas": [
+    {
+      "number": 1,
+      "type": "multiple_choice",
+      "question": "¿Dónde se encuentra la biblioteca?",
+      "options": [
+        {
+          "id": "A",
+          "text": "En una escuela."
+        },
+        {
+          "id": "B",
+          "text": "En el centro del barrio."
+        },
+        {
+          "id": "C",
+          "text": "En un parque."
+        },
+        {
+          "id": "D",
+          "text": "En una calle comercial."
+        }
+      ],
+      "correctAnswer": "B"
+    },
+    {
+      "number": 2,
+      "type": "multiple_choice",
+      "question": "¿Quién recibe a los estudiantes en la biblioteca?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Un autor."
+        },
+        {
+          "id": "B",
+          "text": "Marta."
+        },
+        {
+          "id": "C",
+          "text": "Un profesor."
+        },
+        {
+          "id": "D",
+          "text": "Un bibliotecario invitado."
+        }
+      ],
+      "correctAnswer": "B"
+    },
+    {
+      "number": 3,
+      "type": "multiple_choice",
+      "question": "¿Qué hacen los estudiantes en la biblioteca?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Solo leen libros de aventuras."
+        },
+        {
+          "id": "B",
+          "text": "Hacen tareas, leen o investigan."
+        },
+        {
+          "id": "C",
+          "text": "Juegan en las computadoras."
+        },
+        {
+          "id": "D",
+          "text": "Participan en actividades deportivas."
+        }
+      ],
+      "correctAnswer": "B"
+    },
+    {
+      "number": 4,
+      "type": "open_ended",
+      "question": "¿Qué actividades organiza la biblioteca?",
+      "suggestedAnswer": "Organiza clubes de lectura, talleres de escritura y charlas con autores."
+    },
+    {
+      "number": 5,
+      "type": "open_ended",
+      "question": "Según el texto, ¿qué significa la biblioteca para los jóvenes del barrio?",
+      "suggestedAnswer": "Es más que un espacio con libros: es un punto de encuentro donde nacen ideas, amistades y grandes sueños."
+    },
+    {
+      "number": 6,
+      "type": "open_ended",
+      "question": "¿Te gustaría tener una biblioteca así en tu barrio? ¿Por qué?",
+      "suggestedAnswer": "La respuesta debe expresar una opinión y justificarla con una razón coherente, por ejemplo, el acceso a libros, un lugar para estudiar, participar en actividades o convivir.",
+      "teacherNote": "Aceptar respuestas equivalentes que recuperen el sentido comunitario de la biblioteca."
+    }
+  ],
+  "imageUrl": "/url/to/image.png"
+}

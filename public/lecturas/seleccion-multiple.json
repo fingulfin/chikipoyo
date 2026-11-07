@@ -1,0 +1,25 @@
+{
+  "number": 1,
+  "type": "multiple_select",
+  "question": "¿Cuáles de los siguientes animales son mamíferos? (Selecciona todas las opciones que correspondan)",
+  "options": [
+    {
+      "id": "A",
+      "text": "Ballena azul"
+    },
+    {
+      "id": "B",
+      "text": "Tiburón blanco"
+    },
+    {
+      "id": "C",
+      "text": "Murciélago"
+    },
+    {
+      "id": "D",
+      "text": "Águila real"
+    }
+  ],
+  "correctAnswers": ["A", "C"],
+    "imageUrl": "/url/to/image.png"
+}

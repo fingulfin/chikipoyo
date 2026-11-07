@@ -1,0 +1,25 @@
+{
+    "number": 1,
+      "type": "multiple_choice",
+      "question": "¿Qué hizo Lucas antes de salir de casa?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Compró un libro."
+        },
+        {
+          "id": "B",
+          "text": "Preparó su mochila."
+        },
+        {
+          "id": "C",
+          "text": "Desayunó en el parque."
+        },
+        {
+          "id": "D",
+          "text": "Llamó a un amigo."
+        }
+      ],
+      "correctAnswer": "B",
+        "imageUrl": "/url/to/image.png"
+    }

@@ -1,0 +1,116 @@
+{
+  "title": "Una ayuda inesperada",
+  "text": "Era un lunes por la mañana y Ana iba camino a la escuela cuando empezó a llover muy fuerte. No llevaba paraguas y se apresuró para no llegar tarde. De repente, vio que una señora mayor tenía dificultad para cruzar la calle. La señora llevaba una bolsa pesada y caminaba lentamente.\n\nAna se detuvo, dudó por un momento, pero decidió acercarse para ayudarla. La acompañó hasta la otra acera y, además, la ayudó a llevar la bolsa. La señora le agradeció con una gran sonrisa y le dijo que su gesto le había alegrado el día.\n\nAna llegó a la escuela un poco mojada, pero con el corazón contento. Pensó que, aunque hubiera comenzado como un día lluvioso y difícil, se había convertido en un día especial gracias a un pequeño acto de solidaridad.",
+  "preguntas": [
+    {
+      "number": 1,
+      "type": "multiple_choice",
+      "question": "¿Qué le ocurrió a Ana al salir de casa?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Se olvidó su mochila."
+        },
+        {
+          "id": "B",
+          "text": "Empezó a llover muy fuerte."
+        },
+        {
+          "id": "C",
+          "text": "Llegó tarde a la escuela."
+        },
+        {
+          "id": "D",
+          "text": "Perdió su paraguas."
+        }
+      ],
+      "correctAnswer": "B"
+    },
+    {
+      "number": 2,
+      "type": "multiple_choice",
+      "question": "¿A quién ayudó Ana?",
+      "options": [
+        {
+          "id": "A",
+          "text": "A un compañero de clase."
+        },
+        {
+          "id": "B",
+          "text": "A una señora mayor."
+        },
+        {
+          "id": "C",
+          "text": "A un conductor."
+        },
+        {
+          "id": "D",
+          "text": "A un profesor."
+        }
+      ],
+      "correctAnswer": "B"
+    },
+    {
+      "number": 3,
+      "type": "multiple_choice",
+      "question": "¿Qué llevaba la señora mayor?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Un libro."
+        },
+        {
+          "id": "B",
+          "text": "Una mochila."
+        },
+        {
+          "id": "C",
+          "text": "Una bolsa pesada."
+        },
+        {
+          "id": "D",
+          "text": "Un paraguas."
+        }
+      ],
+      "correctAnswer": "C"
+    },
+    {
+      "number": 4,
+      "type": "multiple_choice",
+      "question": "¿Cómo se sintió la señora mayor?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Enojada."
+        },
+        {
+          "id": "B",
+          "text": "Triste."
+        },
+        {
+          "id": "C",
+          "text": "Agradecida."
+        },
+        {
+          "id": "D",
+          "text": "Indiferente."
+        }
+      ],
+      "correctAnswer": "C"
+    },
+    {
+      "number": 5,
+      "type": "open_ended",
+      "question": "¿Por qué Ana pensó que había sido un día especial?",
+      "suggestedAnswer": "Porque ayudar a la señora transformó un día lluvioso y difícil en un día especial; Ana se sintió contenta por haber realizado un acto de solidaridad."
+    },
+    {
+      "number": 6,
+      "type": "open_ended",
+      "question": "¿Qué enseñanza crees que nos deja esta historia? Explica con tus palabras.",
+      "suggestedAnswer": "La historia enseña que ayudar a otras personas y realizar pequeños actos de solidaridad puede mejorar el día de alguien y también hacernos sentir bien.",
+      "teacherNote": "Aceptar formulaciones equivalentes centradas en solidaridad, ayuda y efecto positivo de las pequeñas acciones."
+    }
+  ],
+  "imageUrl": "/lecturas/N1-01-09.png"
+}

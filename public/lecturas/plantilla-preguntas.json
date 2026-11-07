@@ -1,0 +1,38 @@
+{
+  "title": "Un día diferente",
+  "text": "Lucas se despertó temprano, como todos los sábados. Tenía muchas ganas de ir al parque con su perro, Max. Antes de salir, preparó su mochila con una botella de agua, unas frutas y una pelota.\n\nEl día estaba soleado y el aire era fresco. En el parque, Lucas y Max caminaron por los senderos, jugaron un rato y se sentaron bajo la sombra de un gran árbol. Allí, Lucas leyó un libro que había llevado y observó cómo los niños jugaban en el césped.\n\nAl final de la tarde, regresaron a casa cansados, pero muy contentos. Lucas pensó que había sido un día sencillo, pero especial. A veces, las mejores experiencias no necesitan grandes planes, solo ganas de disfrutar lo que nos rodea.",
+  "preguntas": [
+    {
+      "number": 1,
+      "type": "multiple_choice",
+      "question": "¿Qué hizo Lucas antes de salir de casa?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Compró un libro."
+        },
+        {
+          "id": "B",
+          "text": "Preparó su mochila."
+        },
+        {
+          "id": "C",
+          "text": "Desayunó en el parque."
+        },
+        {
+          "id": "D",
+          "text": "Llamó a un amigo."
+        }
+      ],
+      "correctAnswer": "B"
+    },
+    
+    {
+      "number": 6,
+      "type": "open_ended",
+      "question": "¿Por qué crees que Lucas consideró que fue un día especial? Explica con tus palabras.",
+      "suggestedAnswer": "Lucas consideró que fue un día especial porque disfrutó actividades sencillas en el parque con Max, como caminar, jugar, leer y descansar, y comprendió que no se necesitan grandes planes para pasarla bien."
+    }
+  ],
+  "imageUrl": "/url/to/image.png"
+}
