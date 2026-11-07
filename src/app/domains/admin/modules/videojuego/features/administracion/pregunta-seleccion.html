@@ -1,0 +1,89 @@
+<form
+  class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2"
+  [formGroup]="preguntaSeleccionForm"
+  (ngSubmit)="crearPreguntaSeleccion()"
+>
+  <mat-form-field class="sm:col-span-2">
+    <mat-label>Pregunta</mat-label>
+    <textarea
+      matInput
+      rows="3"
+      formControlName="question"
+    ></textarea>
+    @if (preguntaSeleccionForm.controls.question.hasError('required')) {
+      <mat-error>Escribe el texto de la pregunta.</mat-error>
+    }
+  </mat-form-field>
+
+  <div
+    class="sm:col-span-2"
+    formArrayName="options"
+  >
+    <h3 class="mb-3 text-lg font-semibold">Opciones de respuesta</h3>
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      @for (
+        option of preguntaSeleccionForm.controls.options.controls;
+        track option.controls.id.value
+      ) {
+        <mat-form-field [formGroup]="option">
+          <mat-label>Opción {{ option.controls.id.value }}</mat-label>
+          <input
+            matInput
+            formControlName="text"
+          />
+          @if (option.controls.text.hasError('required')) {
+            <mat-error>Escribe el texto de la opción.</mat-error>
+          }
+        </mat-form-field>
+      }
+    </div>
+  </div>
+
+  <mat-form-field>
+    <mat-label>Respuestas correctas</mat-label>
+    <mat-select
+      formControlName="correctAnswers"
+      multiple
+    >
+      @for (
+        option of preguntaSeleccionForm.controls.options.controls;
+        track option.controls.id.value
+      ) {
+        <mat-option [value]="option.controls.id.value">
+          Opción {{ option.controls.id.value }}
+        </mat-option>
+      }
+    </mat-select>
+    @if (preguntaSeleccionForm.controls.correctAnswers.hasError('required')) {
+      <mat-error>Selecciona al menos una respuesta correcta.</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>URL de imagen</mat-label>
+    <input
+      matInput
+      formControlName="imageUrl"
+      placeholder="/lecturas/imagen.png"
+    />
+  </mat-form-field>
+
+  <div class="sm:col-span-2">
+    <button
+      matButton="filled"
+      type="submit"
+    >
+      Crear pregunta
+    </button>
+  </div>
+</form>
+
+@if (preguntaSeleccionCreada) {
+  <section class="mt-6">
+    <h3 class="mb-2 text-lg font-semibold">Pregunta creada</h3>
+    <pre
+      class="overflow-x-auto rounded-lg bg-neutral-100 p-4 text-sm dark:bg-neutral-800"
+      >{{ preguntaSeleccionCreada | json }}</pre
+    >
+  </section>
+}

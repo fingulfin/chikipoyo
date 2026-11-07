@@ -1,0 +1,59 @@
+<form
+  class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2"
+  [formGroup]="preguntaAbiertaForm"
+  (ngSubmit)="crearPreguntaAbierta()"
+>
+  <mat-form-field class="sm:col-span-2">
+    <mat-label>Pregunta</mat-label>
+    <textarea
+      matInput
+      rows="3"
+      formControlName="question"
+    ></textarea>
+    @if (preguntaAbiertaForm.controls.question.hasError('required')) {
+      <mat-error>Escribe el texto de la pregunta.</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field class="sm:col-span-2">
+    <mat-label>Respuesta sugerida</mat-label>
+    <textarea
+      matInput
+      rows="4"
+      formControlName="suggestedAnswer"
+    ></textarea>
+    @if (
+      preguntaAbiertaForm.controls.suggestedAnswer.hasError('required')
+    ) {
+      <mat-error>Escribe una respuesta sugerida.</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field class="sm:col-span-2">
+    <mat-label>URL de imagen</mat-label>
+    <input
+      matInput
+      formControlName="imageUrl"
+      placeholder="/lecturas/imagen.png"
+    />
+  </mat-form-field>
+
+  <div class="sm:col-span-2">
+    <button
+      matButton="filled"
+      type="submit"
+    >
+      Crear pregunta
+    </button>
+  </div>
+</form>
+
+@if (preguntaAbiertaCreada) {
+  <section class="mt-6">
+    <h3 class="mb-2 text-lg font-semibold">Pregunta creada</h3>
+    <pre
+      class="overflow-x-auto rounded-lg bg-neutral-100 p-4 text-sm dark:bg-neutral-800"
+      >{{ preguntaAbiertaCreada | json }}</pre
+    >
+  </section>
+}
