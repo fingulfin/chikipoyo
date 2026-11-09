@@ -1,4 +1,6 @@
 {
+  "asignatura": "Ciencias Naturales",
+  "grado": "Séptimo",
     "number": 1,
       "type": "multiple_choice",
       "question": "¿Qué hizo Lucas antes de salir de casa?",
