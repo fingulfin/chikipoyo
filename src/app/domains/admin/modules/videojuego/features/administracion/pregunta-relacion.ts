@@ -1,5 +1,7 @@
-import { JsonPipe } from '@angular/common';
+import { DOCUMENT, JsonPipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,6 +17,13 @@ type PreguntaRelacionData = {
   }[];
   correctMatches: { columnAItemId: string; columnBItemId: string }[];
   imageUrl: string;
+  asignatura: string;
+  grado: string;
+}
+
+type AsignaturaGradoOptions = {
+  asignatura: string[];
+  grado: string[];
 }
 
 @Component({
@@ -31,6 +40,15 @@ type PreguntaRelacionData = {
 })
 export default class PreguntaRelacion {
   private readonly formBuilder = inject(FormBuilder).nonNullable;
+  private readonly document = inject(DOCUMENT);
+  private readonly http = inject(HttpClient);
+
+  readonly asignaturaGradoOptions = toSignal(
+    this.http.get<AsignaturaGradoOptions>(
+      new URL('lecturas/asignatura-grado.json', this.document.baseURI).toString(),
+    ),
+    { initialValue: { asignatura: [], grado: [] } },
+  );
 
   readonly preguntaRelacionForm = this.formBuilder.group({
     question: ['', Validators.required],
@@ -49,6 +67,8 @@ export default class PreguntaRelacion {
       Validators.minLength(1),
     ),
     imageUrl: [''],
+    asignatura: ['', Validators.required],
+    grado: ['', Validators.required],
   });
 
   preguntaRelacionCreada: PreguntaRelacionData | null = null;
@@ -117,6 +137,8 @@ export default class PreguntaRelacion {
       ],
       correctMatches: value.correctMatches,
       imageUrl: value.imageUrl,
+      asignatura: value.asignatura,
+      grado: value.grado,
     };
   }
 

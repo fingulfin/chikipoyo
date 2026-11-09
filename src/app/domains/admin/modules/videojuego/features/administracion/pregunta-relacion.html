@@ -182,6 +182,27 @@
     />
   </mat-form-field>
 
+  <mat-form-field>
+    <mat-label>Asignatura</mat-label>
+    <mat-select formControlName="asignatura">
+      @for (
+        asignatura of asignaturaGradoOptions().asignatura;
+        track asignatura
+      ) {
+        <mat-option [value]="asignatura">{{ asignatura }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Grado</mat-label>
+    <mat-select formControlName="grado">
+      @for (grado of asignaturaGradoOptions().grado; track grado) {
+        <mat-option [value]="grado">{{ grado }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
   <div class="sm:col-span-2">
     <button
       matButton="filled"

@@ -1,0 +1,4 @@
+{
+    "asignatura":["Matemáticas", "Física", "Química", "Biología", "Historia", "Geografía", "Lengua y Literatura", "Inglés", "Educación Física", "Arte"],
+    "grado":["Primero", "Segundo", "Tercero", "Cuarto", "Quinto", "Sexto", "Séptimo", "Octavo", "Noveno", "Décimo","Prepa 1", "Prepa 2", "Prepa 3", "Prepa 4", "Prepa 5", "Prepa 6", "Prepa 7", "Prepa 8", "Prepa 9", "Prepa 10", "Universidad 1", "Universidad 2", "Universidad 3", "Universidad 4", "Universidad 5", "Universidad 6", "Universidad 7", "Universidad 8", "Universidad 9", "Universidad 10"]
+}
