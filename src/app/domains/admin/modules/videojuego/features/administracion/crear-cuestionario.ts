@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
@@ -15,6 +16,7 @@ type AsignaturaGradoOptions = {
 @Component({
   selector: 'videojuego-crear-cuestionario',
   imports: [
+    MatButtonModule,
     MatFormFieldModule,
     MatRadioModule,
     MatSelectModule,
