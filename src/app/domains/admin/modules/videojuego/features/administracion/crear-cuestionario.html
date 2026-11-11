@@ -1,6 +1,27 @@
 <section class="mt-6">
   <h3 class="text-lg font-semibold">Crear cuestionario</h3>
-  <p class="mt-2 text-neutral-500">
-    La creación de cuestionarios estará disponible próximamente.
-  </p>
+  <form class="mt-4" [formGroup]="cuestionarioForm">
+    <mat-radio-group
+      class="flex flex-col gap-3"
+      aria-label="Alcance del cuestionario"
+      formControlName="alcance"
+    >
+      <mat-radio-button value="todas">Todas las preguntas</mat-radio-button>
+      <mat-radio-button value="asignatura">Por asignatura</mat-radio-button>
+    </mat-radio-group>
+
+    @if (alcanceSeleccionado() === 'asignatura') {
+      <mat-form-field class="mt-4 w-full">
+        <mat-label>Asignatura</mat-label>
+        <mat-select formControlName="asignatura">
+          @for (
+            asignatura of asignaturaGradoOptions().asignatura;
+            track asignatura
+          ) {
+            <mat-option [value]="asignatura">{{ asignatura }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    }
+  </form>
 </section>
