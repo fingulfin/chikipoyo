@@ -21,11 +21,43 @@
             <mat-option [value]="asignatura">{{ asignatura }}</mat-option>
           }
         </mat-select>
+        @if (cuestionarioForm.controls.asignatura.hasError('required')) {
+          <mat-error>Selecciona una asignatura.</mat-error>
+        }
       </mat-form-field>
     }
 
-    <button class="mt-4 w-fit min-w-0 px-[3px]" matButton="filled" type="button">
+    <button
+      class="mt-4 w-fit min-w-0 px-[3px]"
+      matButton="filled"
+      type="button"
+      [disabled]="buscandoPreguntas()"
+      (click)="buscarPreguntas()"
+    >
       Buscar preguntas
     </button>
   </form>
+
+  @if (buscandoPreguntas()) {
+    <p class="mt-4" role="status">Buscando preguntas...</p>
+  }
+
+  @if (errorAlBuscar()) {
+    <p class="mt-4 text-red-600" role="alert">{{ errorAlBuscar() }}</p>
+  }
+
+  @if (preguntasBuscadas()) {
+    <section class="mt-6" aria-live="polite">
+      <h4 class="mb-2 font-semibold">Preguntas encontradas</h4>
+      @if (preguntas().length > 0) {
+        <ul class="list-disc space-y-2 pl-6">
+          @for (pregunta of preguntas(); track $index) {
+            <li>{{ pregunta.question }}</li>
+          }
+        </ul>
+      } @else {
+        <p>No se encontraron preguntas.</p>
+      }
+    </section>
+  }
 </section>
