@@ -27,15 +27,46 @@
       </mat-form-field>
     }
 
-    <button
-      class="mt-4 w-fit min-w-0 px-[3px]"
-      matButton="filled"
-      type="button"
-      [disabled]="buscandoPreguntas()"
-      (click)="buscarPreguntas()"
-    >
-      Buscar preguntas
-    </button>
+    <div class="mt-4 flex flex-wrap items-center gap-3">
+      <button
+        class="w-fit min-w-0 px-[3px]"
+        matButton="filled"
+        type="button"
+        [disabled]="buscandoPreguntas()"
+        (click)="buscarPreguntas()"
+      >
+        Buscar preguntas
+      </button>
+
+      @if (preguntasBuscadas() && preguntas().length > 0) {
+        <button
+          class="w-fit min-w-0 !bg-orange-500 px-4 !text-white hover:!bg-orange-600"
+          matButton="filled"
+          type="button"
+        >
+          Crear Cuestionario
+        </button>
+      }
+    </div>
+
+    @if (preguntasBuscadas() && preguntas().length > 0) {
+      <p
+        class="mt-6 inline-flex max-w-full flex-wrap items-baseline gap-x-2 gap-y-1 rounded-md bg-gray-100 px-3 py-2 text-sm text-gray-700"
+      >
+        <span class="font-semibold">idmaestro:</span>
+        <span class="break-all">{{ idmaestro }}</span>
+      </p>
+      <mat-form-field appearance="outline" class="mt-4 w-full">
+        <mat-label>Título del cuestionario</mat-label>
+        <input
+          matInput
+          formControlName="titulo"
+          name="titulo"
+          placeholder="Ej. Evaluación de ciencias naturales"
+        />
+        <mat-hint>Escribe un nombre claro para identificar el cuestionario.</mat-hint>
+      </mat-form-field>
+    }
   </form>
 
   @if (buscandoPreguntas()) {
@@ -50,11 +81,42 @@
     <section class="mt-6" aria-live="polite">
       <h4 class="mb-2 font-semibold">Preguntas encontradas</h4>
       @if (preguntas().length > 0) {
-        <ul class="list-disc space-y-2 pl-6">
-          @for (pregunta of preguntas(); track $index) {
-            <li>{{ pregunta.question }}</li>
-          }
-        </ul>
+        <div class="overflow-x-auto rounded-lg border">
+          <table
+            mat-table
+            [dataSource]="preguntas()"
+            class="w-full"
+            aria-label="Lista de preguntas encontradas"
+          >
+            <ng-container matColumnDef="seleccion">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let pregunta; let i = index">
+                <mat-checkbox
+                  [checked]="preguntasSeleccionadas().has(pregunta)"
+                  [aria-label]="'Seleccionar pregunta ' + (i + 1)"
+                  (change)="actualizarSeleccion(pregunta, $event.checked)"
+                ></mat-checkbox>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="numero">
+              <th mat-header-cell *matHeaderCellDef class="w-16">#</th>
+              <td mat-cell *matCellDef="let i = index">
+                {{ i + 1 }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="pregunta">
+              <th mat-header-cell *matHeaderCellDef>Pregunta</th>
+              <td mat-cell *matCellDef="let pregunta">
+                {{ pregunta.question }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnasMostradas"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnasMostradas"></tr>
+          </table>
+        </div>
       } @else {
         <p>No se encontraron preguntas.</p>
       }
