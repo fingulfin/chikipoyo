@@ -51,6 +51,12 @@ export const NAVIGATION: NavigationItem[] = [
         route: '/admin/videojuego/preguntas',
       },
       {
+        id: 'videojuego/cuestionarios',
+        label: 'Cuestionarios',
+        icon: 'quiz',
+        route: '/admin/videojuego/cuestionarios',
+      },
+      {
         id: 'videojuego/problemas',
         label: 'Problemas',
         icon: 'quiz',

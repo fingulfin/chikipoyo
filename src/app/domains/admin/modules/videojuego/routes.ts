@@ -10,6 +10,10 @@ const routes: Routes = [
     loadComponent: () => import('./features/administracion/preguntas'),
   },
   {
+    path: 'cuestionarios',
+    loadComponent: () => import('./features/administracion/cuestionarios'),
+  },
+  {
     path: 'problemas',
     loadComponent: () => import('./features/administracion/problemas'),
   },
