@@ -135,11 +135,13 @@ export default class CrearCuestionario {
       this.cuestionarioCreado.set(false);
       return;
     }
+    const estaActivo = false; // Cambiar a true si se desea que el cuestionario esté activo al crearlo
 
     const cuestionario = {
       idmaestro,
       titulo: controlTitulo.value,
       preguntas: this.preguntas().filter((pregunta) => preguntasSeleccionadas.has(pregunta)),
+      estaActivo
     };
 
     this.errorAlCrear.set('');
