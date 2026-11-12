@@ -9,10 +9,20 @@ export type CuestionarioRequest = {
   preguntas: PreguntaEvaluacion[];
 }
 
+export type OpcionCuestionario = {
+  id: string;
+  text: string;
+}
+
+export type PreguntaCuestionario = PreguntaEvaluacion & {
+  options?: OpcionCuestionario[];
+  correctAnswer?: string;
+}
+
 export type Cuestionario = {
   idmaestro: string;
   titulo: string;
-  preguntas: PreguntaEvaluacion[];
+  preguntas: PreguntaCuestionario[];
   estaActivo: boolean;
 }
 

@@ -8,6 +8,34 @@
       Se encontraron {{ cantidadCuestionarios() }} cuestionarios.
     </p>
   }
+  @if (cuestionarios().length > 0) {
+    <div class="mt-4 space-y-4">
+      @for (cuestionario of cuestionarios(); track $index; let cuestionarioIndex = $index) {
+        <article class="rounded-md border p-4">
+          <mat-checkbox [checked]="cuestionario.estaActivo" disabled>
+            Esta Activo
+          </mat-checkbox>
+          <h4 class="mt-2 font-semibold">
+            {{ cuestionarioIndex + 1 }}. {{ cuestionario.titulo }}
+          </h4>
+          <ol class="mt-2 list-decimal space-y-3 pl-6">
+            @for (pregunta of cuestionario.preguntas; track $index) {
+              <li>
+                <p>{{ pregunta.question }}</p>
+                @for (opcion of pregunta.options ?? []; track opcion.id; let opcionIndex = $index) {
+                  @if (opcion.id === pregunta.correctAnswer) {
+                    <p class="text-blue-600">{{ letrasOpciones[opcionIndex] }} {{ opcion.text }}</p>
+                  } @else {
+                    <p class="text-black">{{ letrasOpciones[opcionIndex] }} {{ opcion.text }}</p>
+                  }
+                }
+              </li>
+            }
+          </ol>
+        </article>
+      }
+    </div>
+  }
   @if (error()) {
     <p class="mt-2 text-red-600" role="alert">{{ error() }}</p>
   }
