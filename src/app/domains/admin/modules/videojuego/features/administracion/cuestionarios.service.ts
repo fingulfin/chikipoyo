@@ -9,10 +9,23 @@ export type CuestionarioRequest = {
   preguntas: PreguntaEvaluacion[];
 }
 
+export type Cuestionario = {
+  idmaestro: string;
+  titulo: string;
+  preguntas: PreguntaEvaluacion[];
+  estaActivo: boolean;
+}
+
 @Injectable({ providedIn: 'root' })
 export class CuestionariosService {
   private readonly http = inject(HttpClient);
   private readonly cuestionarioUrl = `${environment.apiUrl}/api/cuestionarios`;
+
+  obtenerPorMaestro(email: string) {
+    return this.http.get<Cuestionario[]>(
+      `${environment.apiUrl}/api/public/maestro/${encodeURIComponent(email)}`,
+    );
+  }
 
   crear(cuestionario: CuestionarioRequest, token: string) {
     const headers = new HttpHeaders({

@@ -1,6 +1,14 @@
 <section class="mt-6">
   <h3 class="text-lg font-semibold">Actualizar cuestionario</h3>
-  <p class="mt-2 text-neutral-500">
-    La actualización de cuestionarios estará disponible próximamente.
-  </p>
+  @if (cargando()) {
+    <p class="mt-2 text-neutral-500">Cargando cuestionarios...</p>
+  }
+  @if (cantidadCuestionarios() !== null) {
+    <p class="mt-2 text-neutral-500">
+      Se encontraron {{ cantidadCuestionarios() }} cuestionarios.
+    </p>
+  }
+  @if (error()) {
+    <p class="mt-2 text-red-600" role="alert">{{ error() }}</p>
+  }
 </section>
