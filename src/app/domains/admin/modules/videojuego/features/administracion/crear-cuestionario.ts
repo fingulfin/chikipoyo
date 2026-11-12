@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
+import { CuestionariosService } from './cuestionarios.service';
 import { PreguntaEvaluacion, PreguntasEvaluacionService } from './preguntas-evaluacion.service';
 
 type AsignaturaGradoOptions = {
@@ -39,19 +40,24 @@ export default class CrearCuestionario {
   private readonly formBuilder = inject(FormBuilder).nonNullable;
   private readonly document = inject(DOCUMENT);
   private readonly http = inject(HttpClient);
+  private readonly cuestionariosService = inject(CuestionariosService);
   private readonly preguntasEvaluacionService = inject(PreguntasEvaluacionService);
 
   readonly cuestionarioForm = this.formBuilder.group({
     alcance: ['todas'],
     asignatura: ['', Validators.required],
-    titulo: [''],
+    titulo: ['', Validators.required],
   });
 
   preguntas = signal<PreguntaEvaluacion[]>([]);
   preguntasSeleccionadas = signal<Set<PreguntaEvaluacion>>(new Set());
   buscandoPreguntas = signal(false);
+  creandoCuestionario = signal(false);
   preguntasBuscadas = signal(false);
   errorAlBuscar = signal('');
+  errorAlCrear = signal('');
+  errorSeleccionPreguntas = signal('');
+  cuestionarioCreado = signal(false);
 
   readonly alcanceSeleccionado = toSignal(
     this.cuestionarioForm.controls.alcance.valueChanges,
@@ -107,21 +113,55 @@ export default class CrearCuestionario {
   }
 
   crearCuestionario(): void {
-    const idmaestro =
-      typeof localStorage !== 'undefined' ? localStorage.getItem('email') : null;
-    if (!idmaestro) {
-      this.errorAlBuscar.set('No se encontró el email del usuario autenticado.');
+    const controlTitulo = this.cuestionarioForm.controls.titulo;
+    if (controlTitulo.invalid) {
+      controlTitulo.markAsTouched();
+      this.cuestionarioCreado.set(false);
       return;
     }
 
     const preguntasSeleccionadas = this.preguntasSeleccionadas();
+    if (preguntasSeleccionadas.size === 0) {
+      this.errorSeleccionPreguntas.set('Selecciona al menos una pregunta.');
+      this.cuestionarioCreado.set(false);
+      return;
+    }
+
+    const idmaestro =
+      typeof localStorage !== 'undefined' ? localStorage.getItem('email') : null;
+    const token = typeof localStorage !== 'undefined' ? localStorage.getItem('token') : null;
+    if (!idmaestro || !token) {
+      this.errorAlCrear.set('No se encontró el email o el token del usuario autenticado.');
+      this.cuestionarioCreado.set(false);
+      return;
+    }
+
     const cuestionario = {
       idmaestro,
-      titulo: this.cuestionarioForm.controls.titulo.value,
+      titulo: controlTitulo.value,
       preguntas: this.preguntas().filter((pregunta) => preguntasSeleccionadas.has(pregunta)),
     };
 
-    console.log('Cuestionario creado:', cuestionario);
+    this.errorAlCrear.set('');
+    this.errorSeleccionPreguntas.set('');
+    this.cuestionarioCreado.set(false);
+    this.creandoCuestionario.set(true);
+
+    this.cuestionariosService.crear(cuestionario, token).subscribe({
+      next: () => {
+        this.creandoCuestionario.set(false);
+        this.errorAlCrear.set('');
+        this.errorSeleccionPreguntas.set('');
+        this.preguntas.set([]);
+        this.preguntasSeleccionadas.set(new Set());
+        this.preguntasBuscadas.set(false);
+        this.cuestionarioCreado.set(true);
+      },
+      error: () => {
+        this.errorAlCrear.set('No se pudo crear el cuestionario.');
+        this.creandoCuestionario.set(false);
+      },
+    });
   }
 
   actualizarSeleccion(pregunta: PreguntaEvaluacion, seleccionada: boolean): void {
@@ -132,5 +172,7 @@ export default class CrearCuestionario {
       seleccion.delete(pregunta);
     }
     this.preguntasSeleccionadas.set(seleccion);
+    this.errorSeleccionPreguntas.set('');
+    this.cuestionarioCreado.set(false);
   }
 }

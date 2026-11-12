@@ -10,7 +10,7 @@
       <mat-radio-button value="asignatura">Por asignatura</mat-radio-button>
     </mat-radio-group>
 
-    @if (alcanceSeleccionado() === 'asignatura') {
+    @if (alcanceSeleccionado() === 'asignatura' && !cuestionarioCreado()) {
       <mat-form-field class="mt-4 w-full">
         <mat-label>Asignatura</mat-label>
         <mat-select formControlName="asignatura">
@@ -53,9 +53,10 @@
           class="w-fit min-w-0 !bg-orange-500 px-4 !text-white hover:!bg-orange-600"
           matButton="filled"
           type="button"
+          [disabled]="creandoCuestionario()"
           (click)="crearCuestionario()"
         >
-          Crear Cuestionario
+          {{ creandoCuestionario() ? 'Creando...' : 'Crear Cuestionario' }}
         </button>
       </div>
       <mat-form-field appearance="outline" class="w-full">
@@ -66,6 +67,9 @@
           aria-label="Título del cuestionario"
           placeholder="Ej. Evaluación de ciencias naturales"
         />
+        @if (cuestionarioForm.controls.titulo.hasError('required') && cuestionarioForm.controls.titulo.touched) {
+          <mat-error>El título del cuestionario es obligatorio.</mat-error>
+        }
         <mat-hint>Escribe un nombre claro para identificar el cuestionario.</mat-hint>
       </mat-form-field>
     }
@@ -77,6 +81,18 @@
 
   @if (errorAlBuscar()) {
     <p class="mt-4 text-red-600" role="alert">{{ errorAlBuscar() }}</p>
+  }
+
+  @if (errorSeleccionPreguntas()) {
+    <p class="mt-4 text-red-600" role="alert">{{ errorSeleccionPreguntas() }}</p>
+  }
+
+  @if (errorAlCrear()) {
+    <p class="mt-4 text-red-600" role="alert">{{ errorAlCrear() }}</p>
+  }
+
+  @if (cuestionarioCreado()) {
+    <p class="mt-4 text-green-700" role="status">Cuestionario creado correctamente.</p>
   }
 
   @if (preguntasBuscadas()) {
