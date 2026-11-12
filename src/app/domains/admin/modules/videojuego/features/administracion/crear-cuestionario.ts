@@ -106,6 +106,24 @@ export default class CrearCuestionario {
     });
   }
 
+  crearCuestionario(): void {
+    const idmaestro =
+      typeof localStorage !== 'undefined' ? localStorage.getItem('email') : null;
+    if (!idmaestro) {
+      this.errorAlBuscar.set('No se encontró el email del usuario autenticado.');
+      return;
+    }
+
+    const preguntasSeleccionadas = this.preguntasSeleccionadas();
+    const cuestionario = {
+      idmaestro,
+      titulo: this.cuestionarioForm.controls.titulo.value,
+      preguntas: this.preguntas().filter((pregunta) => preguntasSeleccionadas.has(pregunta)),
+    };
+
+    console.log('Cuestionario creado:', cuestionario);
+  }
+
   actualizarSeleccion(pregunta: PreguntaEvaluacion, seleccionada: boolean): void {
     const seleccion = new Set(this.preguntasSeleccionadas());
     if (seleccionada) {

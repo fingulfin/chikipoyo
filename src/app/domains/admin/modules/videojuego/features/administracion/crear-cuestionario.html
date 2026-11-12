@@ -38,15 +38,6 @@
         Buscar preguntas
       </button>
 
-      @if (preguntasBuscadas() && preguntas().length > 0) {
-        <button
-          class="w-fit min-w-0 !bg-orange-500 px-4 !text-white hover:!bg-orange-600"
-          matButton="filled"
-          type="button"
-        >
-          Crear Cuestionario
-        </button>
-      }
     </div>
 
     @if (preguntasBuscadas() && preguntas().length > 0) {
@@ -56,12 +47,23 @@
         <span class="my-[6px] font-semibold">idmaestro:</span>
         <span class="break-all">{{ idmaestro }}</span>
       </p>
+      <div class="mb-2 flex flex-wrap items-center justify-between gap-3">
+        <span class="font-medium">Título del cuestionario</span>
+        <button
+          class="w-fit min-w-0 !bg-orange-500 px-4 !text-white hover:!bg-orange-600"
+          matButton="filled"
+          type="button"
+          (click)="crearCuestionario()"
+        >
+          Crear Cuestionario
+        </button>
+      </div>
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label class="my-[4px]">Título del cuestionario</mat-label>
         <input
           matInput
           formControlName="titulo"
           name="titulo"
+          aria-label="Título del cuestionario"
           placeholder="Ej. Evaluación de ciencias naturales"
         />
         <mat-hint>Escribe un nombre claro para identificar el cuestionario.</mat-hint>
