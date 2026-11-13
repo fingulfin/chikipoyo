@@ -12,7 +12,7 @@
     <div class="mt-4 space-y-4">
       @for (cuestionario of cuestionarios(); track $index; let cuestionarioIndex = $index) {
         <article class="rounded-md border p-4">
-          <mat-checkbox [checked]="cuestionario.estaActivo" disabled>
+          <mat-checkbox [checked]="cuestionario.estaActivo" >
             Esta Activo
           </mat-checkbox>
           <h4 class="mt-2 font-semibold">
