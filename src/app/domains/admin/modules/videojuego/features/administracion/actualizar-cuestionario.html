@@ -5,10 +5,18 @@
       class="w-fit min-w-0 !bg-orange-500 px-4 !text-white hover:!bg-orange-600"
       matButton="filled"
       type="button"
+      [disabled]="actualizando() || cargando() || cuestionarios().length === 0"
+      (click)="actualizarCuestionarios()"
     >
-      Actualizar
+      {{ actualizando() ? 'Actualizando...' : 'Actualizar' }}
     </button>
   </div>
+  @if (error()) {
+    <p class="mt-2 text-red-600" role="alert">{{ error() }}</p>
+  }
+  @if (actualizacionExitosa()) {
+    <p class="mt-2 text-green-700" role="status">Cuestionarios actualizados correctamente.</p>
+  }
   @if (cargando()) {
     <p class="mt-2 text-neutral-500">Cargando cuestionarios...</p>
   }
@@ -21,7 +29,10 @@
     <div class="mt-4 space-y-4">
       @for (cuestionario of cuestionarios(); track $index; let cuestionarioIndex = $index) {
         <article class="rounded-md border p-4">
-          <mat-checkbox [checked]="cuestionario.estaActivo === true">
+          <mat-checkbox
+            [checked]="cuestionario.estaActivo === true"
+            (change)="cambiarEstado(cuestionarioIndex, $event.checked)"
+          >
             Esta Activo
           </mat-checkbox>
           <h4 class="mt-2 font-semibold">
@@ -44,8 +55,5 @@
         </article>
       }
     </div>
-  }
-  @if (error()) {
-    <p class="mt-2 text-red-600" role="alert">{{ error() }}</p>
   }
 </section>

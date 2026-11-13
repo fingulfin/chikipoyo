@@ -37,6 +37,18 @@ export class CuestionariosService {
     );
   }
 
+  actualizarEnBloque(cuestionarios: Cuestionario[], token: string) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    return this.http.put<Cuestionario[]>(
+      `${environment.apiUrl}/api/cuestionarios/batch/update`,
+      cuestionarios,
+      { headers },
+    );
+  }
+
   crear(cuestionario: CuestionarioRequest, token: string) {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
