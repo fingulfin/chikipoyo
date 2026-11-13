@@ -1,5 +1,14 @@
 <section class="mt-6">
-  <h3 class="text-lg font-semibold">Actualizar cuestionario</h3>
+  <div class="flex items-center gap-3">
+    <h3 class="text-lg font-semibold">Actualizar cuestionario</h3>
+    <button
+      class="w-fit min-w-0 !bg-orange-500 px-4 !text-white hover:!bg-orange-600"
+      matButton="filled"
+      type="button"
+    >
+      Actualizar
+    </button>
+  </div>
   @if (cargando()) {
     <p class="mt-2 text-neutral-500">Cargando cuestionarios...</p>
   }
@@ -12,7 +21,7 @@
     <div class="mt-4 space-y-4">
       @for (cuestionario of cuestionarios(); track $index; let cuestionarioIndex = $index) {
         <article class="rounded-md border p-4">
-          <mat-checkbox [checked]="cuestionario.estaActivo" >
+          <mat-checkbox [checked]="cuestionario.estaActivo === true">
             Esta Activo
           </mat-checkbox>
           <h4 class="mt-2 font-semibold">

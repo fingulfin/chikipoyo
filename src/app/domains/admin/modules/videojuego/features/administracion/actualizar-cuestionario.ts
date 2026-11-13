@@ -1,10 +1,11 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Cuestionario, CuestionariosService } from './cuestionarios.service';
 
 @Component({
   selector: 'videojuego-actualizar-cuestionario',
-  imports: [MatCheckboxModule],
+  imports: [MatButtonModule, MatCheckboxModule],
   templateUrl: './actualizar-cuestionario.html',
 })
 export default class ActualizarCuestionario implements OnInit {
